@@ -1,41 +1,35 @@
 import { motion } from "framer-motion";
 
-const partners = [
+const risks = [
   {
-    title: "Importer / dealer / partner flotowy",
-    need: "Ekspozycja, feedback i kontrolowany test popytu.",
-    value: "Projekt może dać realny kontakt klienta z autem i dane z użycia.",
-    confirm: "Warunki floty, dostępność modeli i odpowiedzialność za szkody."
+    risk: "Za mały popyt",
+    mitigation: "Ograniczamy przez mały pilot, szybkie KPI i decyzję po 60-90 dniach."
   },
   {
-    title: "Lotnisko / parking",
-    need: "Lepsze wykorzystanie lokalizacji i przewidywalny proces.",
-    value: "Projekt może uporządkować odbiór i zwrot bez dużej infrastruktury.",
-    confirm: "Zasady współpracy, koszty parkingu i wymagania operacyjne."
+    risk: "Zbyt wysokie koszty floty",
+    mitigation: "Wymaga partnerstwa flotowego, dealerskiego albo elastycznej dostępności aut."
   },
   {
-    title: "Operator rentalowy",
-    need: "Proces, który można powtarzać między lokalizacjami.",
-    value: "Projekt może dać standard wydania auta, raportowania i obsługi.",
-    confirm: "Koszt obsługi, reklamacje, szkody i gotowość zespołu."
+    risk: "Problemy z lokalizacją lotniskową",
+    mitigation: "Można zacząć od parkingu okołolotniskowego i dopiero potem rozmawiać o pełnej integracji."
   },
   {
-    title: "Inwestor",
-    need: "Hipotezy możliwe do walidacji przed większym finansowaniem.",
-    value: "Pilotaż powinien pokazać popyt, koszty i bariery skalowania.",
-    confirm: "Rentowność pilotażu i kryteria decyzji po 90 dniach."
+    risk: "Zbyt skomplikowana obsługa",
+    mitigation: "Start od prostego procesu, małej floty i ręcznego wsparcia tam, gdzie jest potrzebne."
   },
   {
-    title: "Partner reklamowy",
-    need: "Kontakt z klientem w podróży i kontekst lokalny.",
-    value: "Tablet może być kanałem ofert hoteli, usług, atrakcji i ubezpieczeń.",
-    confirm: "Akceptacja użytkownika, zasady emisji i realna konwersja."
+    risk: "Niska adopcja EV",
+    mitigation: "Flota nie jest zamknięta na EV. Może obejmować hybrydy i auta spalinowe."
+  },
+  {
+    risk: "Brak jasnej marży",
+    mitigation: "Pilot ma policzyć realny koszt i przychód na auto, zamiast przyjmować marżę z góry."
   }
 ];
 
 export default function Differentiators() {
   return (
-    <section id="partners" className="section-shell py-20 sm:py-24">
+    <section id="risks" className="section-shell py-20 sm:py-24">
       <motion.div
         initial={{ y: 32, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -43,17 +37,17 @@ export default function Differentiators() {
         transition={{ duration: 0.65 }}
       >
         <p className="eyebrow mb-4 border-electric/20 bg-electric/10 text-electric">
-          Wartość dla partnerów
+          Ryzyka
         </p>
         <h2 className="max-w-4xl text-3xl font-semibold tracking-tight sm:text-5xl">
-          Wiarygodność projektu zależy od tego, co da każdej stronie i co
-          trzeba potwierdzić.
+          Najważniejsze ryzyka są operacyjne i ekonomiczne. Dlatego projekt
+          powinien zaczynać się od pilotażu.
         </h2>
 
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
-          {partners.map((partner, index) => (
+          {risks.map((item, index) => (
             <motion.article
-              key={partner.title}
+              key={item.risk}
               initial={{ y: 24, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: false, amount: 0.3 }}
@@ -62,21 +56,13 @@ export default function Differentiators() {
             >
               <div className="mb-7 h-1 w-14 rounded-full bg-gradient-to-r from-electric to-limepulse" />
               <h3 className="text-xl font-semibold text-white">
-                {partner.title}
+                {item.risk}
               </h3>
               <p className="mt-4 leading-7 text-mist/70">
-                <span className="font-semibold text-white">Potrzebuje: </span>
-                {partner.need}
-              </p>
-              <p className="mt-3 leading-7 text-mist/70">
-                <span className="font-semibold text-white">Projekt może: </span>
-                {partner.value}
-              </p>
-              <p className="mt-3 leading-7 text-limepulse/85">
                 <span className="font-semibold text-limepulse">
-                  Do potwierdzenia:{" "}
+                  Ograniczenie ryzyka:{" "}
                 </span>
-                {partner.confirm}
+                {item.mitigation}
               </p>
             </motion.article>
           ))}

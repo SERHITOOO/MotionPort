@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 
 const navItems = [
+  { label: "Dlaczego teraz", href: "#why-now" },
   { label: "Problem", href: "#problem" },
-  { label: "Flota", href: "#fleet" },
-  { label: "Model", href: "#model" },
-  { label: "Partnerzy", href: "#partners" },
+  { label: "Przychody", href: "#revenue" },
+  { label: "Walidacja", href: "#validation" },
   { label: "Pilot", href: "#pilot" },
+  { label: "Ryzyka", href: "#risks" },
   { label: "Kontakt", href: "#contact" }
 ];
 
@@ -25,7 +26,7 @@ export default function Navbar() {
           </span>
         </a>
 
-        <div className="hidden items-center gap-6 lg:flex">
+        <div className="hidden items-center gap-4 xl:flex xl:gap-6">
           {navItems.map((item) => (
             <a
               key={item.href}

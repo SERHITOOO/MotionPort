@@ -10,7 +10,7 @@ type FormState = {
 };
 
 const roleOptions = [
-  "Inwestor",
+  "Fundusz / inwestor",
   "Operator rentalowy",
   "Importer / dealer",
   "Lotnisko / parking",
@@ -92,12 +92,13 @@ export default function ContactForm() {
             Kontakt
           </p>
           <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">
-            Porozmawiajmy o pilotażu, inwestycji albo partnerstwie.
+            Celem rozmowy jest sprawdzenie, czy warto przygotować założenia
+            pilotażu.
           </h2>
           <p className="mt-6 text-lg leading-8 text-mist/75">
-            Napisz, czy interesuje Cię rola inwestora, operatora rentalowego,
-            importera, dealera, lotniska, parkingu, partnera flotowego albo
-            reklamowego.
+            Na tym etapie szukamy rozmowy o lokalizacji, flocie, kosztach,
+            partnerach, KPI i harmonogramie. To nie jest jeszcze decyzja
+            inwestycyjna.
           </p>
 
           <div className="mt-8 rounded-lg border border-limepulse/20 bg-limepulse/[0.045] p-5">
@@ -106,7 +107,7 @@ export default function ContactForm() {
             </p>
             <p className="mt-3 leading-7 text-mist/75">
               Lokalizacja, flota, segmenty aut, parking, ładowanie lub paliwo,
-              kiosk, tablet, odpowiedzialność za szkody i format raportu.
+              odpowiedzialność za szkody, ubezpieczenie i format raportu.
             </p>
           </div>
         </div>
@@ -197,7 +198,7 @@ export default function ContactForm() {
             disabled={isSubmitting}
             className="mt-6 w-full rounded-md bg-electric px-7 py-4 text-sm font-semibold text-night transition hover:bg-limepulse disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {isSubmitting ? "Wysyłanie..." : "Wyślij zapytanie"}
+            {isSubmitting ? "Wysyłanie..." : "Porozmawiajmy o pilotażu"}
           </button>
 
           {success && (

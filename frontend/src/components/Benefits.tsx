@@ -1,30 +1,17 @@
 import { motion } from "framer-motion";
 
-const clientNeeds = [
-  "szybki odbiór po przylocie",
-  "prosty proces i jasne koszty",
-  "minimum formalności",
-  "instrukcje obsługi auta",
-  "płatność bez chaosu",
-  "wsparcie w razie problemu",
-  "łatwy zwrot auta",
-  "wybór segmentu: budżet, biznes, premium, EV, hybryda albo spalinowe"
-];
-
-const projectCanGive = [
-  "rezerwację online",
-  "kiosk lub szybką ścieżkę odbioru",
-  "tablet w aucie",
-  "instrukcje i wsparcie zdalne",
-  "czytelny standard procesu",
-  "test nowego auta w realnym użyciu",
-  "różne segmenty floty",
-  "w przyszłości pakiety business i premium"
+const revenueStreams = [
+  "Przychód z wynajmu auta.",
+  "Dopłaty za segment premium, SUV, EV, hybrydę lub konkretny model.",
+  "Usługi dodatkowe: ubezpieczenie, drugi kierowca, fotelik, odbiór lub zwrot poza godzinami.",
+  "Partnerstwa z importerami, dealerami, parkingami, hotelami i lokalnymi usługami.",
+  "Dane i raporty z realnego użytkowania aut dla partnerów flotowych, dealerskich i importerskich.",
+  "Leady sprzedażowe dla dealerów lub importerów, jeśli klient po wynajmie chce przetestować albo kupić auto."
 ];
 
 export default function Benefits() {
   return (
-    <section id="benefits" className="section-shell py-20 sm:py-24">
+    <section id="revenue" className="section-shell py-20 sm:py-24">
       <motion.div
         initial={{ y: 32, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -32,57 +19,34 @@ export default function Benefits() {
         transition={{ duration: 0.65 }}
       >
         <p className="eyebrow mb-4 border-limepulse/20 bg-limepulse/10 text-limepulse">
-          Klient i produkt
+          Model zarabiania
         </p>
         <h2 className="max-w-4xl text-3xl font-semibold tracking-tight sm:text-5xl">
-          Klient potrzebuje przewidywalności, a projekt może dać prostszy
-          standard odbioru.
+          Potencjalne źródła przychodu powinny zostać sprawdzone etapami, nie
+          założone z góry.
         </h2>
+        <p className="mt-7 max-w-4xl text-lg leading-8 text-mist/75">
+          Na pierwszym etapie nie zakładamy, że wszystkie strumienie przychodów
+          zadziałają od razu. Celem pilotażu jest sprawdzenie, które z nich mają
+          największy sens.
+        </p>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-2">
-          <motion.div
-            initial={{ y: 24, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: false, amount: 0.28 }}
-            transition={{ duration: 0.55 }}
-            className="glass-card rounded-lg p-6 sm:p-8"
-          >
-            <h3 className="text-2xl font-semibold text-white">
-              Klient potrzebuje
-            </h3>
-            <div className="mt-6 grid gap-3">
-              {clientNeeds.map((item) => (
-                <p
-                  key={item}
-                  className="rounded-lg border border-white/10 bg-white/[0.035] p-4 leading-7 text-mist/75"
-                >
-                  {item}
-                </p>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ y: 24, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: false, amount: 0.28 }}
-            transition={{ duration: 0.55, delay: 0.08 }}
-            className="rounded-lg border border-limepulse/20 bg-limepulse/[0.045] p-6 sm:p-8"
-          >
-            <h3 className="text-2xl font-semibold text-white">
-              Projekt może dać
-            </h3>
-            <div className="mt-6 grid gap-3">
-              {projectCanGive.map((item) => (
-                <p
-                  key={item}
-                  className="rounded-lg border border-limepulse/15 bg-night/35 p-4 leading-7 text-mist/80"
-                >
-                  {item}
-                </p>
-              ))}
-            </div>
-          </motion.div>
+        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {revenueStreams.map((item, index) => (
+            <motion.article
+              key={item}
+              initial={{ y: 24, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: false, amount: 0.28 }}
+              transition={{ duration: 0.55, delay: index * 0.04 }}
+              className="glass-card rounded-lg p-6"
+            >
+              <span className="text-sm font-semibold text-limepulse">
+                0{index + 1}
+              </span>
+              <p className="mt-5 leading-7 text-mist/75">{item}</p>
+            </motion.article>
+          ))}
         </div>
       </motion.div>
     </section>

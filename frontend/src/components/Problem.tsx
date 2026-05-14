@@ -2,16 +2,16 @@ import { motion } from "framer-motion";
 
 const problems = [
   {
-    title: "Klient po przylocie chce prostego odbioru",
-    text: "Kolejki, formalności, niejasne koszty i brak instrukcji przy nowych modelach zwiększają stres po podróży."
+    title: "Dla klienta",
+    text: "Po przylocie wynajem auta często oznacza kolejkę, niejasne warunki, stres przy odbiorze, nieznane auto i słabe wsparcie po wydaniu pojazdu."
   },
   {
-    title: "Operator płaci za ręczną obsługę",
-    text: "Stanowisko, parking, wydania, zwroty, reklamacje i szkody tworzą kosztowny proces trudny do kopiowania."
+    title: "Dla importera / dealera",
+    text: "Klasyczna jazda próbna jest krótka i sztuczna. Marka nie wie, jak klient realnie odbiera auto po kilku godzinach lub dniach użytkowania."
   },
   {
-    title: "Potrzeby klientów są różne",
-    text: "Biznes, turystyka, budżet, premium, EV, hybryda i auta spalinowe wymagają segmentacji zamiast jednej floty."
+    title: "Dla partnera / inwestora",
+    text: "Trudno ocenić, które modele, segmenty i lokalizacje mają realny potencjał bez małego, mierzalnego pilotażu."
   }
 ];
 
@@ -28,13 +28,13 @@ export default function Problem() {
           Problem
         </p>
         <h2 className="max-w-4xl text-3xl font-semibold tracking-tight sm:text-5xl">
-          Lotniskowy rental jest wygodny w teorii, ale często ciężki w procesie.
+          Problem nie leży tylko w aucie. Leży w procesie, danych i ryzyku
+          decyzji.
         </h2>
         <p className="mt-7 max-w-4xl text-lg leading-8 text-mist/75">
-          Projekt celuje w moment po przylocie: klient chce odebrać auto,
-          zrozumieć zasady i ruszyć dalej. Operator potrzebuje procesu, który da
-          się mierzyć, porównywać i skalować bez budowania od razu dużej
-          struktury.
+          MotionPort celuje w moment po przylocie: klient chce szybko odebrać
+          auto i ruszyć dalej, a partner potrzebuje sprawdzić popyt oraz koszty
+          bez budowania od razu dużej organizacji.
         </p>
 
         <div className="mt-10 grid gap-5 lg:grid-cols-3">

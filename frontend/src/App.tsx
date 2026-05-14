@@ -21,13 +21,13 @@ export default function App() {
 
       <main className="relative z-10">
         <Hero />
+        <Audience />
         <Problem />
         <Solution />
-        <Audience />
         <Benefits />
         <Model />
-        <Differentiators />
         <Pilot />
+        <Differentiators />
         <ContactForm />
       </main>
 

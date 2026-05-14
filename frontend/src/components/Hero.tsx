@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 
 const readiness = [
-  { label: "Proces", value: "do testu" },
-  { label: "Segmenty", value: "EV / hybryda / spalinowe / premium" },
-  { label: "Lokalizacje", value: "2-4 do walidacji" },
-  { label: "Ekonomia", value: "do potwierdzenia" }
+  { label: "Status", value: "koncepcja do walidacji" },
+  { label: "Flota", value: "EV / hybryda / benzyna / premium" },
+  { label: "Pilot", value: "60-90 dni" },
+  { label: "Decyzja", value: "skalować, zmienić albo zamknąć" }
 ];
 
 export default function Hero() {
@@ -28,7 +28,7 @@ export default function Hero() {
             transition={{ duration: 0.55 }}
             className="eyebrow mb-5 border-electric/20 bg-electric/10 text-electric"
           >
-            Najpierw test procesu, później decyzja o skalowaniu.
+            Materiał do pierwszej rozmowy inwestorskiej / partnerskiej
           </motion.p>
 
           <motion.h1
@@ -43,20 +43,38 @@ export default function Hero() {
           <motion.p
             initial={{ y: 28, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.65, delay: 0.16 }}
+            transition={{ duration: 0.65, delay: 0.12 }}
+            className="mt-5 text-xl font-semibold text-electric sm:text-2xl"
+          >
+            Airport mobility concept for Asian car brands
+          </motion.p>
+
+          <motion.p
+            initial={{ y: 28, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.65, delay: 0.18 }}
             className="mt-7 max-w-2xl text-lg leading-8 text-mist/75 sm:text-xl"
           >
-            Cyfrowy model wynajmu aut marek azjatyckich przy lotniskach,
-            testowany najpierw na wybranych lokalizacjach. Projekt zakłada
-            prostszy odbiór po przylocie, parking operacyjny, kiosk, tablet w
-            aucie i pilotaż, który powinien sprawdzić popyt na EV, hybrydy,
-            auta spalinowe i segment premium.
+            MotionPort to koncepcja pilotażowego modelu wynajmu, test-drive'u i
+            ekspozycji marek azjatyckich przy lotniskach. Projekt łączy szybki
+            odbiór auta po przylocie, prosty proces obsługi, segmentowaną flotę
+            oraz dane z realnego użytkowania pojazdów.
+          </motion.p>
+
+          <motion.p
+            initial={{ y: 28, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.65, delay: 0.24 }}
+            className="mt-5 max-w-2xl rounded-lg border border-limepulse/20 bg-limepulse/[0.045] p-5 leading-7 text-mist/80"
+          >
+            Na tym etapie celem nie jest sprzedaż gotowego biznesu, tylko
+            sprawdzenie, czy model ma sens operacyjny, finansowy i partnerski.
           </motion.p>
 
           <motion.div
             initial={{ y: 28, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.65, delay: 0.24 }}
+            transition={{ duration: 0.65, delay: 0.3 }}
             className="mt-10 flex flex-col gap-4 sm:flex-row"
           >
             <a
@@ -76,7 +94,7 @@ export default function Hero() {
           <motion.div
             initial={{ y: 28, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.65, delay: 0.32 }}
+            transition={{ duration: 0.65, delay: 0.38 }}
             className="mt-8 grid gap-3 sm:grid-cols-2"
           >
             {readiness.map((item) => (
@@ -118,7 +136,7 @@ export default function Hero() {
                 Pilot readiness
               </p>
               <p className="mt-2 text-xl font-semibold text-limepulse">
-                Do potwierdzenia
+                Założenie robocze
               </p>
             </motion.div>
 
@@ -187,7 +205,7 @@ export default function Hero() {
             </svg>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {["Airport", "Fleet", "Process"].map((item) => (
+              {["Airport", "Fleet", "Data"].map((item) => (
                 <div
                   key={item}
                   className="rounded-lg border border-white/10 bg-white/[0.04] p-5"
