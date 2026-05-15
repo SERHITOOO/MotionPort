@@ -10,13 +10,19 @@ import Pilot from "./components/Pilot";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
 import PremiumFleetPage from "./pages/PremiumFleetPage";
+import InvestorPage from "./pages/InvestorPage";
 
 export default function App() {
   const routePath = window.location.pathname.replace(/\/$/, "");
   const isPremiumFleetRoute = routePath.endsWith("/premium-fleet");
+  const isInvestorRoute = routePath.endsWith("/investor");
 
   if (isPremiumFleetRoute) {
     return <PremiumFleetPage />;
+  }
+
+  if (isInvestorRoute) {
+    return <InvestorPage />;
   }
 
   return (

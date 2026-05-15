@@ -85,15 +85,21 @@ export default function Hero() {
             </a>
             <a
               href="#contact"
-              className="rounded-md border border-white/15 px-6 py-4 text-center text-sm font-semibold text-white transition hover:border-limepulse hover:bg-limepulse/10"
+              className="rounded-md border border-white/[0.15] px-6 py-4 text-center text-sm font-semibold text-white transition hover:border-limepulse hover:bg-limepulse/10"
             >
               Porozmawiajmy o inwestycji / partnerstwie
             </a>
             <a
               href="./premium-fleet/"
-              className="rounded-md border border-electric/35 bg-electric/10 px-6 py-4 text-center text-sm font-semibold text-electric transition hover:border-electric hover:bg-electric/15"
+              className="rounded-md border border-electric/[0.35] bg-electric/10 px-6 py-4 text-center text-sm font-semibold text-electric transition hover:border-electric hover:bg-electric/[0.15]"
             >
               Zobacz wizualny koncept floty
+            </a>
+            <a
+              href="./investor/"
+              className="rounded-md border border-limepulse/[0.35] bg-limepulse/10 px-6 py-4 text-center text-sm font-semibold text-limepulse transition hover:border-limepulse hover:bg-limepulse/[0.15]"
+            >
+              Widok dla inwestora
             </a>
           </motion.div>
 
@@ -108,7 +114,7 @@ export default function Hero() {
                 key={item.label}
                 className="rounded-lg border border-white/10 bg-white/[0.035] p-4"
               >
-                <p className="text-xs uppercase tracking-[0.2em] text-mist/45">
+                <p className="text-xs uppercase tracking-[0.2em] text-mist/[0.45]">
                   {item.label}
                 </p>
                 <p className="mt-2 text-sm font-semibold text-white">

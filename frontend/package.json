@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && cp dist/index.html dist/404.html && mkdir -p dist/premium-fleet && cp dist/index.html dist/premium-fleet/index.html && cp -R dist/assets dist/premium-fleet/assets",
+    "build": "tsc && vite build && cp dist/index.html dist/404.html && for route in premium-fleet investor; do mkdir -p dist/$route && cp dist/index.html dist/$route/index.html && cp -R dist/assets dist/$route/assets; done",
     "preview": "vite preview"
   },
   "dependencies": {
