@@ -75,7 +75,7 @@ export default function Hero() {
             initial={{ y: 28, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.65, delay: 0.3 }}
-            className="mt-10 flex flex-col gap-4 sm:flex-row"
+            className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap"
           >
             <a
               href="#pilot"
@@ -88,6 +88,12 @@ export default function Hero() {
               className="rounded-md border border-white/15 px-6 py-4 text-center text-sm font-semibold text-white transition hover:border-limepulse hover:bg-limepulse/10"
             >
               Porozmawiajmy o inwestycji / partnerstwie
+            </a>
+            <a
+              href="./premium-fleet"
+              className="rounded-md border border-electric/35 bg-electric/10 px-6 py-4 text-center text-sm font-semibold text-electric transition hover:border-electric hover:bg-electric/15"
+            >
+              Zobacz wizualny koncept floty
             </a>
           </motion.div>
 

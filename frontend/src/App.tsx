@@ -9,8 +9,16 @@ import Differentiators from "./components/Differentiators";
 import Pilot from "./components/Pilot";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
+import PremiumFleetPage from "./pages/PremiumFleetPage";
 
 export default function App() {
+  const routePath = window.location.pathname.replace(/\/$/, "");
+  const isPremiumFleetRoute = routePath.endsWith("/premium-fleet");
+
+  if (isPremiumFleetRoute) {
+    return <PremiumFleetPage />;
+  }
+
   return (
     <div className="min-h-screen overflow-hidden bg-night text-white">
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:44px_44px]" />
