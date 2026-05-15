@@ -90,7 +90,7 @@ export default function Hero() {
               Porozmawiajmy o inwestycji / partnerstwie
             </a>
             <a
-              href="./premium-fleet"
+              href="./premium-fleet/"
               className="rounded-md border border-electric/35 bg-electric/10 px-6 py-4 text-center text-sm font-semibold text-electric transition hover:border-electric hover:bg-electric/15"
             >
               Zobacz wizualny koncept floty
