@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import PremiumVehicleRender from "./PremiumVehicleRender";
 
 const readiness = [
   { label: "Status", value: "koncepcja do walidacji" },
@@ -125,112 +126,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <motion.div
-          initial={{ scale: 0.96, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.9, delay: 0.2 }}
-          className="relative min-h-[430px]"
-        >
-          <div className="car-stage relative overflow-hidden p-5 sm:p-8">
-            <motion.div
-              aria-hidden="true"
-              animate={{ x: ["-20%", "120%"] }}
-              transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
-              className="absolute left-0 top-14 h-px w-2/3 bg-gradient-to-r from-transparent via-electric to-transparent opacity-70"
-            />
-            <motion.div
-              aria-hidden="true"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute right-4 top-4 z-10 max-w-[210px] rounded-lg border border-white/10 bg-night/75 p-4 backdrop-blur sm:right-6 sm:top-6"
-            >
-              <p className="text-xs uppercase tracking-[0.24em] text-mist/50">
-                Pilot readiness
-              </p>
-              <p className="mt-2 text-xl font-semibold text-limepulse">
-                Założenie robocze
-              </p>
-            </motion.div>
-
-            <svg
-              className="car-light mx-auto mt-8 w-full max-w-[620px]"
-              viewBox="0 0 700 320"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Sylwetka auta w modelu mobility"
-            >
-              <path
-                d="M92 211C128 156 199 121 278 116C358 111 430 128 497 174C551 176 595 191 622 220C637 236 628 262 606 262H100C71 262 63 235 92 211Z"
-                fill="url(#body)"
-                stroke="rgba(255,255,255,0.28)"
-              />
-              <path
-                d="M214 124C250 78 331 70 400 103C431 118 459 141 484 172H166C176 151 192 137 214 124Z"
-                fill="rgba(45,226,255,0.08)"
-                stroke="rgba(45,226,255,0.38)"
-              />
-              <path
-                d="M134 211H560"
-                stroke="#2DE2FF"
-                strokeWidth="5"
-                strokeLinecap="round"
-              />
-              <path
-                d="M516 201H611"
-                stroke="#B6FF4D"
-                strokeWidth="6"
-                strokeLinecap="round"
-              />
-              <circle
-                cx="188"
-                cy="260"
-                r="38"
-                fill="#050816"
-                stroke="rgba(255,255,255,0.28)"
-                strokeWidth="10"
-              />
-              <circle
-                cx="509"
-                cy="260"
-                r="38"
-                fill="#050816"
-                stroke="rgba(255,255,255,0.28)"
-                strokeWidth="10"
-              />
-              <circle cx="188" cy="260" r="13" fill="#2DE2FF" />
-              <circle cx="509" cy="260" r="13" fill="#2DE2FF" />
-              <defs>
-                <linearGradient
-                  id="body"
-                  x1="86"
-                  y1="116"
-                  x2="620"
-                  y2="278"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="#0E162B" />
-                  <stop offset="0.5" stopColor="#13213B" />
-                  <stop offset="1" stopColor="#07101E" />
-                </linearGradient>
-              </defs>
-            </svg>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {["Airport", "Fleet", "Data"].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-lg border border-white/10 bg-white/[0.04] p-5"
-                >
-                  <p className="text-sm text-mist/50">Moduł</p>
-                  <p className="mt-1 text-lg font-semibold text-white">
-                    {item}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+        <PremiumVehicleRender compact priority className="min-h-[430px]" />
       </div>
     </section>
   );
