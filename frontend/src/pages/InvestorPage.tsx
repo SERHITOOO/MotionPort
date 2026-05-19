@@ -85,7 +85,7 @@ const topSixTraffic2025 = airportData.reduce(
 
 const scenarioData: Scenario[] = [
   {
-    name: "Conservative",
+    name: "Ostrożny",
     cars: 10,
     days: 14,
     adr: 300,
@@ -93,7 +93,7 @@ const scenarioData: Scenario[] = [
     tone: "border-white/10 bg-white/[0.035]"
   },
   {
-    name: "Base",
+    name: "Bazowy",
     cars: 10,
     days: 18,
     adr: 350,
@@ -101,7 +101,7 @@ const scenarioData: Scenario[] = [
     tone: "border-electric/25 bg-electric/[0.07]"
   },
   {
-    name: "Aggressive",
+    name: "Ambitny",
     cars: 10,
     days: 22,
     adr: 450,
@@ -120,13 +120,13 @@ const heroMetrics = [
     value: "24,1 mln",
     label: "pasażerów",
     detail: "Lotnisko Chopina 2025",
-    source: "ULC"
+    source: "ULC, PDF Q4 2025"
   },
   {
     value: "USD 22,37 mld",
     label: "rynek Europy",
     detail: "Vehicle rental 2026",
-    source: "Mordor Intelligence"
+    source: "Mordor Intelligence, estymacja"
   },
   {
     value: "10 aut",
@@ -192,234 +192,234 @@ const whyNowData = [
 ];
 
 const revenueStreams = [
-  "Daily rental revenue.",
-  "Weekend premium packages.",
-  "Airport pickup / dropoff fee.",
-  "Corporate recurring accounts.",
-  "Long-term B2B rental.",
-  "Insurance / protection package.",
-  "Delivery and concierge add-ons.",
-  "Dealer/importer test-drive partnerships.",
-  "Brand exposure revenue.",
-  "Lead generation for vehicle sales.",
-  "Fleet remarketing / residual value optimization."
+  "Przychód z najmu dziennego.",
+  "Pakiety weekendowe i premium.",
+  "Opłata za odbiór lub zwrot przy lotnisku.",
+  "Powtarzalne konta corporate.",
+  "Dłuższy najem B2B.",
+  "Pakiety ochrony, ubezpieczenia i dodatki.",
+  "Delivery, concierge i obsługa poza godzinami.",
+  "Partnerstwa test-drive z dealerami lub importerami.",
+  "Ekspozycja marki i formaty promocyjne.",
+  "Leady sprzedażowe dla dealerów i importerów.",
+  "Remarketing floty i optymalizacja wartości rezydualnej."
 ];
 
 const pilotPlan = [
   {
-    period: "Day 0-30",
+    period: "Dni 0-30",
     items: [
-      "Final fleet sourcing.",
-      "Landing page and booking interest.",
-      "Pricing grid.",
-      "Deposit and insurance rules.",
-      "First airport operating process.",
-      "Measurement dashboard."
+      "Finalne warunki pozyskania floty.",
+      "Landing page i test zainteresowania rezerwacją.",
+      "Siatka cen i warianty segmentów aut.",
+      "Zasady depozytu, ubezpieczenia i odpowiedzialności.",
+      "Pierwszy proces operacyjny przy lotnisku.",
+      "Dashboard pomiaru KPI."
     ]
   },
   {
-    period: "Day 31-60",
+    period: "Dni 31-60",
     items: [
-      "Paid acquisition tests.",
-      "Corporate outreach.",
-      "Hotel/concierge partnerships.",
-      "Dealer/importer conversations.",
-      "Utilization tracking.",
-      "Pricing adjustment."
+      "Testy płatnego pozyskania rezerwacji.",
+      "Sprzedaż do firm i executive assistantów.",
+      "Rozmowy z hotelami, concierge i parkingami.",
+      "Rozmowy z dealerami oraz importerami.",
+      "Pomiar obłożenia i problemów operacyjnych.",
+      "Korekta cen oraz zasad wydania auta."
     ]
   },
   {
-    period: "Day 61-90",
+    period: "Dni 61-90",
     items: [
-      "Contribution margin review.",
-      "Damage/claims review.",
-      "CAC review.",
-      "Repeat booking review.",
-      "Corporate pipeline review.",
-      "Decision: stop, optimize, or scale."
+      "Przegląd marży kontrybucyjnej.",
+      "Przegląd szkód, reklamacji i ubezpieczenia.",
+      "Ocena CAC oraz konwersji kanałów.",
+      "Ocena powrotów klientów i zapytań corporate.",
+      "Ocena gotowości partnerów do skali.",
+      "Decyzja: zatrzymać, poprawić albo skalować."
     ]
   }
 ];
 
 const scaleCriteria = [
-  "Utilization approaches or exceeds 18 rental days per car/month.",
-  "ADR remains near or above 350 PLN.",
-  "Contribution margin per car is positive after direct costs.",
-  "CAC is repeatable and not destroying margin.",
-  "Damage ratio is controlled.",
-  "Corporate pipeline appears.",
-  "Customers understand and value the premium fleet.",
-  "Fleet sourcing terms are repeatable."
+  "Obłożenie zbliża się do 18 dni najmu na auto miesięcznie albo je przekracza.",
+  "ADR utrzymuje się blisko lub powyżej 350 PLN.",
+  "Marża kontrybucyjna na aucie jest dodatnia po kosztach bezpośrednich.",
+  "CAC jest powtarzalny i nie niszczy marży.",
+  "Poziom szkód i reklamacji jest kontrolowany.",
+  "Pojawia się pipeline corporate.",
+  "Klienci rozumieją i doceniają selekcjonowaną flotę premium.",
+  "Warunki pozyskania floty dają się powtórzyć."
 ];
 
 const killCriteria = [
-  "Utilization stays weak.",
-  "Customers only buy on discount.",
-  "Damage and insurance erase margin.",
-  "Paid acquisition is too expensive.",
-  "Airport handover is operationally messy.",
-  "Fleet financing kills contribution margin.",
-  "No strategic partner sees value.",
-  "The model depends only on founder effort."
+  "Obłożenie pozostaje słabe mimo testów kanałów.",
+  "Klienci kupują tylko po dużym rabacie.",
+  "Szkody i ubezpieczenie kasują marżę.",
+  "Płatne pozyskanie rezerwacji jest zbyt drogie.",
+  "Wydanie auta przy lotnisku jest operacyjnie chaotyczne.",
+  "Finansowanie floty zabija marżę kontrybucyjną.",
+  "Partner strategiczny nie widzi wartości poza najmem.",
+  "Model działa tylko dzięki ręcznej pracy foundera."
 ];
 
 const kpiData = [
-  ["Rental days per car/month", "target 18", "pomiar w pilotażu"],
-  ["ADR", "target 350 PLN", "do walidacji"],
-  ["Revenue per car", "6 300 PLN", "model przed kosztami"],
-  ["Contribution margin per car", "positive", "do walidacji"],
-  ["CAC per booking", "threshold", "pomiar w pilotażu"],
-  ["Damage/claims ratio", "controlled", "do walidacji"],
-  ["Booking conversion", "tracked", "pomiar w pilotażu"],
-  ["Repeat bookings", "tracked", "pomiar w pilotażu"],
-  ["Corporate leads", "pipeline", "do walidacji"],
-  ["Airport pickup time", "tracked", "pomiar w pilotażu"],
-  ["NPS", "tracked", "pomiar w pilotażu"],
-  ["Vehicle category demand", "segmented", "pomiar w pilotażu"]
+  ["Dni najmu na auto / miesiąc", "cel 18", "pomiar w pilotażu"],
+  ["ADR", "cel 350 PLN", "do walidacji"],
+  ["Przychód na auto", "6 300 PLN", "model przed kosztami"],
+  ["Marża kontrybucyjna na auto", "dodatnia", "do walidacji"],
+  ["CAC na rezerwację", "próg", "pomiar w pilotażu"],
+  ["Szkody i reklamacje", "kontrola", "do walidacji"],
+  ["Konwersja rezerwacji", "pomiar", "pomiar w pilotażu"],
+  ["Powroty klientów", "pomiar", "pomiar w pilotażu"],
+  ["Leady corporate", "pipeline", "do walidacji"],
+  ["Czas odbioru przy lotnisku", "pomiar", "pomiar w pilotażu"],
+  ["NPS", "pomiar", "pomiar w pilotażu"],
+  ["Popyt na segmenty aut", "segmentacja", "pomiar w pilotażu"]
 ];
 
 const customerSegments = [
   {
-    title: "Business traveler",
-    text: "Fast pickup, invoice, predictable car, premium image."
+    title: "Klient biznesowy",
+    text: "Szybki odbiór, faktura, przewidywalne auto i wizerunek premium."
   },
   {
-    title: "Tourist / weekend",
-    text: "Premium experience, clear rules, comfort."
+    title: "Turysta / weekend",
+    text: "Komfort, jasne zasady i możliwość wyboru auta lepszego niż standardowa klasa rentalowa."
   },
   {
     title: "Corporate",
-    text: "Recurring usage, fixed account rules, predictable service."
+    text: "Powtarzalne użycie, stałe zasady konta, raportowanie i przewidywalna obsługa."
   },
   {
-    title: "EV/hybrid curious",
-    text: "Real-world test before purchase."
+    title: "EV / hybrid curious",
+    text: "Realny test auta przed zakupem lub dłuższą decyzją flotową."
   },
   {
-    title: "Dealer/importer",
-    text: "Exposure, leads, customer behavior data."
+    title: "Dealer / importer",
+    text: "Ekspozycja, leady i dane o zachowaniu klientów w realnym użyciu."
   }
 ];
 
 const gtmChannels = [
-  "Google Search for airport rental intent.",
-  "Corporate outreach to companies and executive assistants.",
-  "Hotels and concierge.",
-  "Dealer/importer co-marketing.",
+  "Google Search na intencję wynajmu przy lotnisku.",
+  "Outbound do firm, biur zarządu i executive assistantów.",
+  "Hotele, concierge i partnerzy premium travel.",
+  "Co-marketing z dealerem lub importerem.",
   "Retargeting.",
   "LinkedIn B2B.",
-  "Premium travel partnerships."
+  "Partnerstwa premium travel i parkingi okołolotniskowe."
 ];
 
 const strategicPartners = [
-  ["Dealer group", "Rental as extended test drive and sales lead channel."],
-  ["Importer", "Market exposure for Asian brands."],
-  ["Leasing company", "Fleet placement with utilization upside."],
-  ["Fleet management company", "Premium airport vertical."],
-  ["Airport service provider", "Additional monetization of passenger traffic."],
-  ["Corporate clients", "Premium mobility without owning fleet."]
+  ["Grupa dealerska", "Najem jako wydłużony test-drive i kanał leadów sprzedażowych."],
+  ["Importer", "Ekspozycja rynku i feedback dla marek azjatyckich."],
+  ["Leasing", "Ulokowanie floty z potencjałem obłożenia i danych popytowych."],
+  ["Fleet management", "Pion airport premium jako nowy use case flotowy."],
+  ["Operator usług lotniskowych", "Dodatkowa monetyzacja ruchu pasażerskiego."],
+  ["Klienci corporate", "Mobilność premium bez własnej floty."]
 ];
 
 const positioningMatrix = [
-  ["Traditional rental", "High fleet volume, low vehicle storytelling."],
-  ["Taxi/chauffeur", "Convenient, but no self-drive premium vehicle experience."],
-  ["Car sharing", "Urban, short use, less premium, less airport-oriented."],
-  ["Dealer test drive", "Short, sales-heavy, not real-life usage."],
-  ["MotionPort", "Airport-first, curated premium fleet, rental revenue plus brand/channel value."]
+  ["Tradycyjny rental", "Duży wolumen floty, słaba narracja konkretnego pojazdu."],
+  ["Taxi / chauffeur", "Wygodne, ale bez samodzielnego doświadczenia auta premium."],
+  ["Car sharing", "Miejskie, krótkie użycie, mniej premium i mniej airport-first."],
+  ["Jazda próbna u dealera", "Krótka, sprzedażowa, daleka od realnego użycia w podróży."],
+  ["MotionPort", "Airport-first, selekcjonowana flota premium, przychód z najmu plus wartość kanału dla marek."]
 ];
 
 const potentialMoat = [
-  "Airport operating playbook.",
-  "Fleet sourcing terms.",
-  "Dealer/importer partnerships.",
-  "Corporate relationships.",
-  "Vehicle demand data.",
-  "Customer acquisition data.",
+  "Playbook operacyjny przy lotnisku.",
+  "Warunki pozyskania floty.",
+  "Partnerstwa dealer / importer.",
+  "Relacje corporate.",
+  "Dane popytu na konkretne auta.",
+  "Dane kosztu pozyskania klienta.",
   "Premium brand experience.",
-  "Claims and handover SOP.",
-  "Repeatable location launch playbook.",
-  "Residual value management."
+  "SOP szkód, odbioru i zwrotu.",
+  "Powtarzalny launch playbook lokalizacji.",
+  "Zarządzanie wartością rezydualną."
 ];
 
 const riskData = [
-  ["Asset-heavy model", "Small pilot, leasing, dealer partnership, revenue-share, no large fleet purchase before proof."],
-  ["Low utilization", "10-car test, dynamic pricing, corporate channels, channel tracking."],
-  ["Damage/insurance", "Deposits, protection packages, inspections, telematics, damage reserve."],
-  ["Seasonality", "Corporate accounts, flexible fleet, multiple airports, weekend packages."],
-  ["Competition", "Premium curation, specific vehicle story, partner value, better experience."],
-  ["Airport logistics", "SOP, parking partners, pickup/dropoff tests."],
-  ["EV charging", "Mixed fleet: EV, hybrid, selected combustion."],
-  ["Residual value", "Select resale-friendly models, leasing/buyback options, dealer support."],
-  ["CAC", "Prioritize high-intent search and corporate channels, kill weak channels fast."],
-  ["Non-scalability", "Second airport playbook, KPI thresholds, standardized operations."]
+  ["Kapitałochłonność", "Mały pilot, leasing, partnerstwo dealerskie, revenue-share, bez dużego zakupu floty przed dowodem ekonomii."],
+  ["Niskie obłożenie", "Test 10 aut, dynamic pricing, kanały corporate, śledzenie CAC per kanał."],
+  ["Szkody / ubezpieczenie", "Depozyty, pakiety ochrony, inspekcje, telematyka i rezerwa na szkody."],
+  ["Sezonowość", "Konta corporate, elastyczna flota, kilka lotnisk i pakiety weekendowe."],
+  ["Konkurencja", "Selekcja premium, story konkretnego auta, wartość dla partnerów i lepsze doświadczenie."],
+  ["Logistyka lotniskowa", "SOP, partner parkingowy, test odbioru i zwrotu, alternatywa okołolotniskowa."],
+  ["Ładowanie EV", "Flota mieszana: EV, hybryda i wybrane auta spalinowe."],
+  ["Wartość rezydualna", "Modele łatwiejsze w odsprzedaży, leasing, buyback lub wsparcie dealera."],
+  ["CAC", "Priorytet dla high-intent search i corporate; szybkie wygaszanie słabych kanałów."],
+  ["Brak skalowalności", "Playbook drugiego lotniska, progi KPI i standaryzacja operacji."]
 ];
 
 const mustBeTrue = [
-  "Customers must pay for premium, not only discount.",
-  "10 cars must get close to base utilization.",
-  "Average daily rate must survive real demand testing.",
-  "Direct costs must not erase margin.",
-  "Damage must be manageable.",
-  "At least one acquisition channel must work.",
-  "Corporate demand must show repeatability.",
-  "Fleet sourcing must be repeatable.",
-  "Airport process must not be too messy.",
-  "A strategic partner must see value beyond rental revenue."
+  "Klienci muszą płacić za premium, nie tylko reagować na rabat.",
+  "10 aut musi zbliżyć się do bazowego obłożenia.",
+  "ADR musi przetrwać test realnego popytu.",
+  "Koszty bezpośrednie nie mogą zjadać marży.",
+  "Szkody muszą być zarządzalne.",
+  "Co najmniej jeden kanał pozyskania musi działać powtarzalnie.",
+  "Popyt corporate musi pokazać powtarzalność.",
+  "Pozyskanie floty musi dać się powtórzyć.",
+  "Proces przy lotnisku nie może być zbyt chaotyczny.",
+  "Partner strategiczny musi widzieć wartość poza przychodem z najmu."
 ];
 
 const useOfFunds = [
-  "Fleet deposits or leasing support.",
-  "Insurance and operational setup.",
-  "Booking system and analytics.",
-  "Airport handover process.",
-  "Marketing tests.",
-  "Corporate sales.",
-  "Legal and compliance.",
-  "Premium content and vehicle presentation.",
-  "Working capital buffer.",
-  "Data dashboard."
+  "Depozyty flotowe lub wsparcie leasingu.",
+  "Ubezpieczenie i setup operacyjny.",
+  "System rezerwacji i analityka.",
+  "Proces wydania auta przy lotnisku.",
+  "Testy marketingowe.",
+  "Sprzedaż corporate.",
+  "Legal i compliance.",
+  "Premium content i prezentacja aut.",
+  "Bufor kapitału obrotowego.",
+  "Dashboard danych."
 ];
 
 const milestoneData = [
-  ["Stage 0", "Investment teaser and partner conversations."],
-  ["Stage 1", "10-car Warsaw pilot, 90 days."],
-  ["Stage 2", "25 to 50 cars, second airport or corporate accounts."],
-  ["Stage 3", "100+ cars, 3 airports, positive unit economics."],
-  ["Stage 4", "Strategic investment, acquisition, roll-up or CEE expansion."]
+  ["Etap 0", "Teaser inwestorski i rozmowy z partnerami."],
+  ["Etap 1", "10-autowy pilot w Warszawie, 90 dni."],
+  ["Etap 2", "25-50 aut, drugie lotnisko albo konta corporate."],
+  ["Etap 3", "100+ aut, 3 lotniska, dodatnia ekonomia jednostkowa."],
+  ["Etap 4", "Inwestycja strategiczna, akwizycja, roll-up albo ekspansja CEE."]
 ];
 
 const exitBuyerData = [
-  "Traditional car rental group.",
-  "Dealer group.",
-  "Automotive importer.",
-  "Leasing company.",
-  "Fleet management company.",
-  "Airport service provider.",
-  "Mobility platform.",
-  "Corporate mobility operator."
+  "Grupa car rental.",
+  "Grupa dealerska.",
+  "Importer automotive.",
+  "Firma leasingowa.",
+  "Fleet management.",
+  "Operator usług lotniskowych.",
+  "Platforma mobility.",
+  "Operator corporate mobility."
 ];
 
 const exitTriggers = [
-  "100+ cars.",
-  "3+ airports.",
-  "Repeatable CAC.",
-  "Positive contribution margin.",
-  "Stable utilization.",
-  "Corporate accounts.",
-  "Dealer/importer partnership.",
-  "Low claims ratio.",
-  "Strong SOP.",
-  "Data proving vehicle demand."
+  "100+ aut.",
+  "3+ lotniska.",
+  "Powtarzalny CAC.",
+  "Dodatnia marża kontrybucyjna.",
+  "Stabilne obłożenie.",
+  "Konta corporate.",
+  "Partnerstwo dealer / importer.",
+  "Niski poziom szkód i reklamacji.",
+  "Silne SOP.",
+  "Dane potwierdzające popyt na pojazdy."
 ];
 
 const finalInvestorDecision = [
-  "The market is large enough to test.",
-  "Warsaw is the right first pilot.",
-  "The model is risky but measurable.",
-  "The biggest risk is capital intensity.",
-  "The first pilot can reduce that risk.",
-  "Scaling should be conditional, not emotional.",
-  "Strategic exit exists only if airport economics are proven."
+  "Rynek jest wystarczająco duży, żeby go testować.",
+  "Warszawa jest logicznym pierwszym pilotem.",
+  "Model jest ryzykowny, ale mierzalny.",
+  "Największe ryzyko to kapitałochłonność.",
+  "Pierwszy pilot może istotnie obniżyć to ryzyko.",
+  "Skalowanie musi być warunkowe, nie emocjonalne.",
+  "Exit strategiczny ma sens tylko po udowodnieniu ekonomii lotniskowej."
 ];
 
 function formatNumber(value: number) {
@@ -508,7 +508,7 @@ function MemoCard() {
         className="rounded-lg border border-limepulse/20 bg-[linear-gradient(145deg,rgba(182,255,77,0.10),rgba(255,255,255,0.04))] p-7 shadow-limeglow sm:p-10"
       >
         <p className="eyebrow mb-6 border-limepulse/20 bg-limepulse/10 text-limepulse">
-          Investment thesis
+          Teza inwestycyjna
         </p>
         <p className="max-w-5xl text-2xl font-semibold leading-tight tracking-tight text-white sm:text-4xl">
           Nie zakładamy, że rynek potrzebuje kolejnej wypożyczalni. Testujemy,
@@ -541,7 +541,7 @@ function StickyNav({ homeHref }: { homeHref: string }) {
         <a href={homeHref} className="flex min-w-0 items-center gap-3">
           <span className="h-2.5 w-2.5 rounded-full bg-electric shadow-glow" />
           <span className="truncate text-xs font-semibold uppercase tracking-[0.22em] text-white sm:text-sm">
-            MotionPort Investor
+            MotionPort dla inwestora
           </span>
         </a>
         <div className="hidden items-center gap-5 xl:flex">
@@ -583,7 +583,7 @@ function ObjectionCard({
       transition={{ duration: 0.45, delay: index * 0.04 }}
       className="glass-card rounded-lg p-6"
     >
-      <p className="text-sm font-semibold text-electric">Objection {index + 1}</p>
+      <p className="text-sm font-semibold text-electric">Pytanie {index + 1}</p>
       <h3 className="mt-4 text-xl font-semibold text-white">{objection}</h3>
       <p className="mt-4 leading-7 text-mist/70">{answer}</p>
     </motion.article>
@@ -598,11 +598,11 @@ function AirportChart() {
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h3 className="text-2xl font-semibold text-white">
-            Airport traffic 2024 vs 2025
+            Ruch pasażerski 2024 vs 2025
           </h3>
           <p className="mt-2 text-sm text-mist/[0.55]">
-            Pasażerowie rocznie, źródło: ULC. Dane do potwierdzenia przed
-            wysyłką do funduszu.
+            Pasażerowie rocznie, źródło: ULC, PDF Q4 2025. Dane nie obejmują
+            pasażerów tranzytowych oraz G.A.
           </p>
         </div>
         <div className="flex gap-4 text-xs uppercase tracking-[0.16em] text-mist/[0.55]">
@@ -658,7 +658,7 @@ function ScenarioChart() {
   return (
     <div className="glass-card rounded-lg p-6">
       <h3 className="text-2xl font-semibold text-white">
-        Scenario monthly revenue comparison
+        Porównanie scenariuszy miesięcznego przychodu
       </h3>
       <p className="mt-2 text-sm text-mist/[0.55]">
         Model założeń. Nie wynik historyczny.
@@ -682,7 +682,7 @@ function ScenarioChart() {
               />
             </div>
             <p className="mt-2 text-xs text-mist/50">
-              {scenario.cars} aut, {scenario.days} dni/mies., {scenario.adr} PLN/day
+              {scenario.cars} aut, {scenario.days} dni/mies., {scenario.adr} PLN/dzień
             </p>
           </div>
         ))}
@@ -697,10 +697,10 @@ function ScaleChart() {
   return (
     <div className="glass-card rounded-lg p-6">
       <h3 className="text-2xl font-semibold text-white">
-        Cars vs monthly revenue
+        Flota vs miesięczny przychód
       </h3>
       <p className="mt-2 text-sm text-mist/[0.55]">
-        Base case: 350 PLN/day, 18 rental days/month, 6 300 PLN revenue per car/month.
+        Scenariusz bazowy: 350 PLN/dzień, 18 dni najmu miesięcznie, 6 300 PLN przychodu na auto miesięcznie.
       </p>
       <div className="mt-8 grid h-72 grid-cols-5 items-end gap-3">
         {scaleData.map((item) => (
@@ -714,7 +714,7 @@ function ScaleChart() {
             />
             <div className="text-center">
               <p className="text-sm font-semibold text-white">{item.cars}</p>
-              <p className="text-[0.68rem] text-mist/[0.45]">cars</p>
+              <p className="text-[0.68rem] text-mist/[0.45]">aut</p>
             </div>
           </div>
         ))}
@@ -770,15 +770,15 @@ function InvestorCalculator() {
   ]);
 
   const inputs = [
-    ["Fleet size", fleetSize, setFleetSize, 1, 250],
-    ["Average daily rate", adr, setAdr, 100, 900],
-    ["Rental days per car/month", rentalDays, setRentalDays, 1, 30],
-    ["Monthly lease/financing cost per car", leaseCost, setLeaseCost, 0, 9000],
-    ["Insurance per car", insurance, setInsurance, 0, 3000],
-    ["Service/cleaning cost per rental", cleaningCost, setCleaningCost, 0, 500],
-    ["Damage reserve per car", damageReserve, setDamageReserve, 0, 3000],
-    ["CAC per booking", cac, setCac, 0, 700],
-    ["Average bookings per car", bookings, setBookings, 1, 30]
+    ["Wielkość floty", fleetSize, setFleetSize, 1, 250],
+    ["Średnia stawka dzienna", adr, setAdr, 100, 900],
+    ["Dni najmu na auto / miesiąc", rentalDays, setRentalDays, 1, 30],
+    ["Miesięczny koszt leasingu / finansowania na auto", leaseCost, setLeaseCost, 0, 9000],
+    ["Ubezpieczenie na auto", insurance, setInsurance, 0, 3000],
+    ["Serwis / czyszczenie na rezerwację", cleaningCost, setCleaningCost, 0, 500],
+    ["Rezerwa na szkody na auto", damageReserve, setDamageReserve, 0, 3000],
+    ["CAC na rezerwację", cac, setCac, 0, 700],
+    ["Średnia liczba rezerwacji na auto", bookings, setBookings, 1, 30]
   ] as const;
 
   return (
@@ -809,13 +809,13 @@ function InvestorCalculator() {
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           {[
-            ["Monthly revenue", `${formatCurrency(output.monthlyRevenue)} PLN`],
-            ["Annualized revenue", `${formatCurrency(output.annualizedRevenue)} PLN`],
-            ["Cost per car", `${formatCurrency(output.costPerCar)} PLN`],
-            ["Estimated contribution margin", `${formatCurrency(output.contributionMargin)} PLN`],
-            ["Break-even rental days", `${output.breakEvenDays} dni`],
-            ["Revenue per vehicle", `${formatCurrency(output.revenuePerVehicle)} PLN`],
-            ["Contribution per vehicle", `${formatCurrency(output.contributionPerVehicle)} PLN`]
+            ["Miesięczny przychód", `${formatCurrency(output.monthlyRevenue)} PLN`],
+            ["Przychód annualizowany", `${formatCurrency(output.annualizedRevenue)} PLN`],
+            ["Koszt na auto", `${formatCurrency(output.costPerCar)} PLN`],
+            ["Szacowana marża kontrybucyjna", `${formatCurrency(output.contributionMargin)} PLN`],
+            ["Próg rentowności w dniach najmu", `${output.breakEvenDays} dni`],
+            ["Przychód na pojazd", `${formatCurrency(output.revenuePerVehicle)} PLN`],
+            ["Kontrybucja na pojazd", `${formatCurrency(output.contributionPerVehicle)} PLN`]
           ].map(([label, value]) => (
             <div
               key={label}
@@ -837,7 +837,7 @@ function RiskTable() {
   return (
     <section id="risks" className="section-shell py-16 sm:py-20">
       <SectionHeader
-        eyebrow="Risk table"
+        eyebrow="Tabela ryzyk"
         title="Największe ryzyko: kapitałochłonność bez potwierdzonej marży."
         text="Ryzyka są częścią tezy. Inwestor powinien zobaczyć, że pilot jest zaprojektowany po to, żeby je szybko zmierzyć."
       />
@@ -899,31 +899,34 @@ function SourceNote() {
             >
               Mordor Intelligence: Europe Vehicle Rental Market.
             </a>{" "}
-            Publiczny opis raportu wskazuje USD 22,37B w 2026, USD 30,91B w
-            2031 oraz CAGR 6,68%.
+            Publiczny opis raportu wskazuje USD 22,37B w 2026, USD 30,91B w 2031
+            oraz CAGR 6,68%. To estymacja rynkowa, nie wynik MotionPort.
           </p>
           <p>
             <a
-              href="https://www.researchandmarkets.com/reports/6210547/poland-car-rental-and-mobility-solutions-market"
+              href="https://www.kenresearch.com/poland-car-rental-mobility-solutions-market"
               className="font-semibold text-electric hover:text-white"
             >
               Ken Research: Poland Car Rental & Mobility Solutions Market.
             </a>{" "}
-            Źródła dystrybucyjne raportu wskazują wartość rynku około USD 1,2B.
+            Publiczny opis raportu wskazuje wartość rynku około USD 1,2B. To
+            estymacja raportu, wymagająca ostrożnego cytowania.
           </p>
           <p>
             <a
-              href="https://ulc.gov.pl/aktualnosci/przewozy-w-polskich-portach-lotniczych-w-2025-roku"
+              href="https://ulc.gov.pl/_download/statystyki/2025/q4/wg_portow_lotniczych_4kw2025.pdf"
               className="font-semibold text-electric hover:text-white"
             >
-              ULC: airport traffic statistics.
+              ULC: przewozy według portów lotniczych, Q4 2025.
             </a>{" "}
-            Dane lotniskowe 2024/2025 użyte w materiale: do potwierdzenia przed
-            wysyłką do funduszu.
+            Dane lotniskowe 2024/2025 użyte w materiale zostały zweryfikowane z
+            PDF-em ULC opublikowanym w kwietniu 2026. Nie obejmują pasażerów
+            tranzytowych oraz G.A.
           </p>
           <p>
-            Internal assumptions: ADR, utilization, fleet size, scenario revenue,
-            koszty w kalkulatorze i progi skali.
+            Założenia wewnętrzne MotionPort: ADR, obłożenie, wielkość floty,
+            scenariusze przychodowe, koszty w kalkulatorze i progi skali. To
+            nie są dane historyczne.
           </p>
         </div>
         <p className="mt-7 rounded-lg border border-limepulse/20 bg-limepulse/[0.045] p-4 leading-7 text-mist/75">
@@ -941,7 +944,7 @@ function CTASection({ homeHref }: { homeHref: string }) {
     <section className="section-shell py-16 sm:py-20">
       <div className="rounded-lg border border-electric/20 bg-[linear-gradient(145deg,rgba(45,226,255,0.11),rgba(255,255,255,0.035))] p-7 sm:p-10">
         <p className="eyebrow mb-5 border-electric/20 bg-electric/10 text-electric">
-          Final investor decision
+          Decyzja inwestora
         </p>
         <h2 className="max-w-5xl text-4xl font-semibold tracking-tight text-white sm:text-6xl">
           Najpierw 10 aut. Potem dane. Dopiero potem skala.
@@ -985,7 +988,7 @@ export default function InvestorPage() {
   const homeHref = getHomeHref();
 
   useEffect(() => {
-    document.title = "MotionPort | Investor teaser";
+    document.title = "MotionPort | Wersja dla inwestora";
   }, []);
 
   return (
@@ -1003,7 +1006,7 @@ export default function InvestorPage() {
               transition={{ duration: 0.65 }}
             >
               <p className="eyebrow mb-5 border-limepulse/20 bg-limepulse/10 text-limepulse">
-                Investor teaser / Warsaw pilot
+                Wersja dla inwestora / pilot w Warszawie
               </p>
               <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
                 Mobilność premium przy lotniskach. Najpierw 10 aut. Potem
@@ -1050,7 +1053,7 @@ export default function InvestorPage() {
 
         <section className="section-shell py-16 sm:py-20">
           <SectionHeader
-            eyebrow="Investor objection wall"
+            eyebrow="Najważniejsze pytania inwestora"
             title="Co inwestor pomyśli w pierwszych 5 minutach"
             text="Te pytania trzeba odpowiedzieć przed rozmową, nie po niej."
           />
@@ -1063,7 +1066,7 @@ export default function InvestorPage() {
 
         <section className="section-shell py-16 sm:py-20">
           <SectionHeader
-            eyebrow="Why now"
+            eyebrow="Dlaczego teraz"
             title="Lotnisko nie jest tylko lokalizacją. Lotnisko jest filtrem klientów z natychmiastową potrzebą mobilności."
           />
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -1083,31 +1086,31 @@ export default function InvestorPage() {
 
         <section id="market" className="section-shell py-16 sm:py-20">
           <SectionHeader
-            eyebrow="Market proof"
+            eyebrow="Weryfikacja rynku"
             title="Rynek jest wystarczająco duży, ale pilot ma sprawdzić lokalną ekonomię."
           />
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             <MetricCard
               value="USD 22,37B"
-              label="Europe rental market 2026"
+              label="Europejski rynek rental 2026"
               detail="USD 30,91B by 2031, CAGR 6,68%."
               source="Mordor Intelligence"
             />
             <MetricCard
               value="USD 1,2B"
-              label="Poland mobility market"
+              label="Polski rynek mobility"
               detail="Szacowana wartość rynku car rental & mobility solutions."
               source="Ken Research"
             />
             <MetricCard
               value="24,1M"
-              label="Warsaw Chopin 2025"
-              detail="13,3% r/r. Dane do potwierdzenia przed wysyłką."
+              label="Lotnisko Chopina 2025"
+              detail="13,3% r/r. Dane zweryfikowane z PDF ULC Q4 2025."
               source="ULC"
             />
             <MetricCard
               value={`${(topSixTraffic2025 / 1000000).toFixed(1)}M`}
-              label="Top 6 Polish airports"
+              label="Top 6 lotnisk w Polsce"
               detail="Suma ruchu 2025 dla wskazanych lotnisk."
               source="ULC"
             />
@@ -1125,7 +1128,7 @@ export default function InvestorPage() {
 
         <section className="section-shell py-16 sm:py-20">
           <SectionHeader
-            eyebrow="Airport rollout"
+            eyebrow="Ekspansja lotniskowa"
             title="Ekspansja lotnisko po lotnisku wymaga playbooka, nie tylko floty."
           />
           <div className="overflow-x-auto rounded-lg border border-white/10">
@@ -1162,7 +1165,7 @@ export default function InvestorPage() {
 
         <section className="section-shell py-16 sm:py-20">
           <SectionHeader
-            eyebrow="Business model"
+            eyebrow="Model biznesowy"
             title="Najlepszy scenariusz to miks: wynajem + corporate + partnerstwa automotive + dane o zainteresowaniu pojazdami."
           />
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -1182,9 +1185,9 @@ export default function InvestorPage() {
 
         <section id="economics" className="section-shell py-16 sm:py-20">
           <SectionHeader
-            eyebrow="10-car pilot economics"
+            eyebrow="Ekonomia pilotażu 10 aut"
             title="Model założeń. Nie wynik historyczny."
-            text="Base case: 10 aut, ADR 350 PLN, 18 dni najmu na auto miesięcznie."
+            text="Scenariusz bazowy: 10 aut, ADR 350 PLN, 18 dni najmu na auto miesięcznie."
           />
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {scenarioData.map((scenario) => (
@@ -1199,7 +1202,7 @@ export default function InvestorPage() {
                   {formatCurrency(scenario.monthlyRevenue)} PLN
                 </p>
                 <p className="mt-4 leading-7 text-mist/70">
-                  {scenario.cars} cars, {scenario.days} days/month, {scenario.adr} PLN/day.
+                  {scenario.cars} aut, {scenario.days} dni/mies., {scenario.adr} PLN/dzień.
                 </p>
               </div>
             ))}
@@ -1207,13 +1210,13 @@ export default function InvestorPage() {
           <div className="mt-6 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="rounded-lg border border-white/10 bg-white/[0.035] p-6">
               <p className="text-sm uppercase tracking-[0.16em] text-mist/50">
-                Base outputs
+                Wyniki bazowe
               </p>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
                 {[
-                  ["Revenue per car/month", "6 300 PLN"],
-                  ["Revenue for 10 cars/month", "63 000 PLN"],
-                  ["Annualized revenue", "756 000 PLN"],
+                  ["Przychód na auto / miesiąc", "6 300 PLN"],
+                  ["Przychód z 10 aut / miesiąc", "63 000 PLN"],
+                  ["Przychód annualizowany", "756 000 PLN"],
                   ["Status", "model przed kosztami"]
                 ].map(([label, value]) => (
                   <div key={label}>
@@ -1229,27 +1232,27 @@ export default function InvestorPage() {
 
         <section className="section-shell py-16 sm:py-20">
           <SectionHeader
-            eyebrow="Real economics"
+            eyebrow="Realna ekonomia"
             title="Przychód bez kosztów nie wystarcza."
             text="Decyzja o skalowaniu powinna zależeć od marży kontrybucyjnej na aucie, a nie od samego obrotu."
           />
           <div className="grid gap-5 lg:grid-cols-2">
             <div className="glass-card rounded-lg p-6">
               <p className="text-sm uppercase tracking-[0.16em] text-electric">
-                Monthly revenue per car
+                Miesięczny przychód na auto
               </p>
               <p className="mt-5 text-3xl font-semibold text-white">
-                ADR x rental days
+                ADR x dni najmu
               </p>
             </div>
             <div className="glass-card rounded-lg p-6">
               <p className="text-sm uppercase tracking-[0.16em] text-limepulse">
-                Contribution margin per car
+                Marża kontrybucyjna na auto
               </p>
               <p className="mt-5 leading-8 text-mist/75">
-                Revenue per car minus financing/leasing, insurance, cleaning,
-                service, parking, damage reserve, payment costs, direct CAC and
-                operating handling cost.
+                Przychód na auto minus finansowanie lub leasing, ubezpieczenie,
+                czyszczenie, serwis, parking, rezerwa na szkody, koszty
+                płatności, bezpośredni CAC oraz koszt obsługi operacyjnej.
               </p>
             </div>
           </div>
@@ -1259,7 +1262,7 @@ export default function InvestorPage() {
 
         <section className="section-shell py-16 sm:py-20">
           <SectionHeader
-            eyebrow="Scale model"
+            eyebrow="Model skali"
             title="Skala robi wrażenie tylko wtedy, gdy jednostka ekonomiczna działa."
           />
           <ScaleChart />
@@ -1267,7 +1270,7 @@ export default function InvestorPage() {
 
         <section id="pilot-plan" className="section-shell py-16 sm:py-20">
           <SectionHeader
-            eyebrow="90-day pilot plan"
+            eyebrow="Plan pilotażu 90 dni"
             title="Trzy miesiące wystarczą, żeby niektóre założenia obronić albo zabić."
           />
           <div className="grid gap-5 lg:grid-cols-3">
@@ -1288,13 +1291,13 @@ export default function InvestorPage() {
 
         <section className="section-shell py-16 sm:py-20">
           <SectionHeader
-            eyebrow="Kill / scale criteria"
+            eyebrow="Kryteria stop / scale"
             title="Kiedy skalować, a kiedy zabić projekt"
             text="Ta sekcja jest celowo twarda. Pokazuje, że skala ma być warunkowa, nie emocjonalna."
           />
           <div className="grid gap-5 lg:grid-cols-2">
             <div className="rounded-lg border border-limepulse/20 bg-limepulse/[0.045] p-6">
-              <h3 className="text-2xl font-semibold text-white">Scale if</h3>
+              <h3 className="text-2xl font-semibold text-white">Skalować, jeżeli</h3>
               <div className="mt-6 space-y-3">
                 {scaleCriteria.map((item) => (
                   <p key={item} className="leading-7 text-mist/75">
@@ -1304,7 +1307,7 @@ export default function InvestorPage() {
               </div>
             </div>
             <div className="rounded-lg border border-white/10 bg-white/[0.035] p-6">
-              <h3 className="text-2xl font-semibold text-white">Do not scale if</h3>
+              <h3 className="text-2xl font-semibold text-white">Nie skalować, jeżeli</h3>
               <div className="mt-6 space-y-3">
                 {killCriteria.map((item) => (
                   <p key={item} className="leading-7 text-mist/75">
@@ -1320,7 +1323,7 @@ export default function InvestorPage() {
 
         <section className="section-shell py-16 sm:py-20">
           <SectionHeader
-            eyebrow="Customer segments"
+            eyebrow="Segmenty klientów"
             title="Premium nie oznacza jednego klienta. Oznacza precyzyjny use case."
           />
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
@@ -1390,7 +1393,7 @@ export default function InvestorPage() {
         <section className="section-shell py-16 sm:py-20">
           <SectionHeader
             eyebrow="Moat"
-            title="Current moat: weak until validated."
+            title="Obecna przewaga jest słaba, dopóki nie zostanie zwalidowana."
             text="Przewaga nie powstaje z samego pomysłu. Powstaje z danych, umów, operacji i powtarzalności."
           />
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
@@ -1409,7 +1412,7 @@ export default function InvestorPage() {
 
         <section className="section-shell py-16 sm:py-20">
           <SectionHeader
-            eyebrow="What must be true"
+            eyebrow="Co musi być prawdą"
             title="Brutalna checklista walidacji"
           />
           <div className="grid gap-3 md:grid-cols-2">
@@ -1426,7 +1429,7 @@ export default function InvestorPage() {
 
         <section className="section-shell py-16 sm:py-20">
           <SectionHeader
-            eyebrow="Funding logic"
+            eyebrow="Logika finansowania"
             title="Kwota rundy: do określenia po warunkach pozyskania floty i zakresie pilotażu."
           />
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
@@ -1440,7 +1443,7 @@ export default function InvestorPage() {
 
         <section className="section-shell py-16 sm:py-20">
           <SectionHeader
-            eyebrow="Milestones"
+            eyebrow="Kamienie milowe"
             title="Kolejne etapy muszą wynikać z danych, nie z ambicji floty."
           />
           <div className="grid gap-4 md:grid-cols-5">
@@ -1457,14 +1460,14 @@ export default function InvestorPage() {
 
         <section id="exit" className="section-shell py-16 sm:py-20">
           <SectionHeader
-            eyebrow="Exit logic"
+            eyebrow="Logika exitu"
             title="Exit nie będzie za stronę internetową ani za samą flotę."
             text="Exit może być za powtarzalny kanał popytu, dane, partnerstwa i udowodnioną ekonomię pojazdu."
           />
           <div className="grid gap-5 lg:grid-cols-2">
             <div className="glass-card rounded-lg p-6">
               <h3 className="text-2xl font-semibold text-white">
-                Potential buyers
+                Potencjalni kupujący
               </h3>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {exitBuyerData.map((item) => (
@@ -1475,7 +1478,7 @@ export default function InvestorPage() {
               </div>
             </div>
             <div className="rounded-lg border border-limepulse/20 bg-limepulse/[0.045] p-6">
-              <h3 className="text-2xl font-semibold text-white">Exit triggers</h3>
+              <h3 className="text-2xl font-semibold text-white">Warunki, które mogą uruchomić exit</h3>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {exitTriggers.map((item) => (
                   <p key={item} className="rounded-lg border border-limepulse/[0.15] bg-night/[0.35] p-4 text-mist/75">
