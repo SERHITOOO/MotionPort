@@ -191,6 +191,69 @@ const whyNowData = [
   "Dealerzy i importerzy potrzebują nowych kanałów ekspozycji."
 ];
 
+const technologyModules = [
+  {
+    title: "Flight-aware pickup",
+    stage: "MVP półautomatyczny",
+    text:
+      "Klient podaje numer lotu. Proces odbioru dopasowuje komunikację do realnego czasu przylotu, opóźnienia i punktu wyjścia z terminala."
+  },
+  {
+    title: "Digital Vehicle Passport",
+    stage: "QR w aucie",
+    text:
+      "Każde auto ma cyfrowy paszport: instrukcja obsługi, zasady zwrotu, ładowanie lub tankowanie, zgłoszenie szkody i kontakt do wsparcia."
+  },
+  {
+    title: "Smart handover",
+    stage: "Pre-check + dokumentacja",
+    text:
+      "Przed odbiorem klient przechodzi podstawowy pre-check, a wydanie auta opiera się na zdjęciach, depozycie, jasnym statusie auta i standardzie zwrotu."
+  },
+  {
+    title: "Fleet Intelligence Dashboard",
+    stage: "Panel KPI",
+    text:
+      "Dashboard pokazuje obłożenie, ADR, koszt obsługi, szkody, reklamacje, popyt na segmenty aut oraz koszt pozyskania rezerwacji."
+  },
+  {
+    title: "Test-drive lead engine",
+    stage: "Feedback po jeździe",
+    text:
+      "Po wynajmie klient może wyrazić zainteresowanie dłuższym testem, kontaktem z dealerem lub zakupem. To tworzy wartość dla importera i dealera."
+  },
+  {
+    title: "Segment demand scoring",
+    stage: "Decyzje flotowe",
+    text:
+      "Pilot porównuje popyt na EV, hybrydy, auta spalinowe, SUV, premium i business. Flota po pilotażu wynika z danych, nie z intuicji."
+  },
+  {
+    title: "Charging / fuel readiness",
+    stage: "Gotowość operacyjna auta",
+    text:
+      "System rozróżnia potrzeby EV, hybryd i aut spalinowych: poziom baterii, paliwo, koszt energii, tankowanie, ładowanie i gotowość do wydania."
+  }
+];
+
+const technologyMvp = [
+  "Rezerwacja webowa i formularz pre-check.",
+  "QR / digital vehicle passport w każdym aucie.",
+  "Ręcznie wspierany flight-aware pickup.",
+  "Panel KPI dla pilotażu.",
+  "Feedback po jeździe i lead dla partnera.",
+  "Raport tygodniowy: popyt, koszty, szkody, segmenty."
+];
+
+const technologyLater = [
+  "Integracja z danymi lotów.",
+  "Digital key lub lockbox tam, gdzie proces i prawo na to pozwolą.",
+  "Integracje z telematyką i systemem rezerwacji.",
+  "Automatyczne scoringi segmentów floty.",
+  "Panel dla partnera flotowego, dealera lub importera.",
+  "Model rekomendacji floty dla kolejnego lotniska."
+];
+
 const revenueStreams = [
   "Przychód z najmu dziennego.",
   "Pakiety weekendowe i premium.",
@@ -525,9 +588,94 @@ function MemoCard() {
   );
 }
 
+function TechnologyLayer() {
+  return (
+    <section id="technology" className="section-shell py-16 sm:py-20">
+      <SectionHeader
+        eyebrow="Warstwa technologiczna"
+        title="Airport Mobility OS: technologia ma walidować operację, nie udawać gotowej platformy."
+        text="Najpierw prosty, mierzalny system pilotażowy: cyfrowy odbiór, instrukcja auta, dane floty i raport dla partnera. Dopiero po walidacji warto automatyzować droższe elementy."
+      />
+
+      <div className="rounded-lg border border-electric/20 bg-[linear-gradient(145deg,rgba(45,226,255,0.10),rgba(255,255,255,0.035))] p-6 sm:p-8">
+        <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+          <div>
+            <p className="eyebrow border-electric/20 bg-electric/10 text-electric">
+              Produkt do pilotażu
+            </p>
+            <h3 className="mt-6 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              MotionPort nie musi zaczynać od dużej aplikacji mobilnej.
+            </h3>
+            <p className="mt-5 leading-8 text-mist/75">
+              Najlepsze MVP to lekka warstwa operacyjna nad flotą: web,
+              QR w aucie, dashboard KPI, feedback po jeździe i ręcznie wspierany
+              odbiór przy lotnisku. To ogranicza koszt startu i szybciej pokazuje,
+              czy model działa.
+            </p>
+            <p className="mt-5 rounded-lg border border-limepulse/20 bg-limepulse/[0.045] p-4 leading-7 text-mist/75">
+              Teza technologiczna: przewaga nie wynika z samego kodu. Wynika z
+              połączenia procesu lotniskowego, danych wykorzystania aut, leadów
+              dla partnerów i powtarzalnego playbooka lokalizacji.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {technologyModules.map((module, index) => (
+              <motion.article
+                key={module.title}
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: false, amount: 0.25 }}
+                transition={{ duration: 0.45, delay: index * 0.03 }}
+                className="rounded-lg border border-white/10 bg-night/45 p-5"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-limepulse">
+                  {module.stage}
+                </p>
+                <h4 className="mt-4 text-xl font-semibold text-white">
+                  {module.title}
+                </h4>
+                <p className="mt-4 leading-7 text-mist/70">{module.text}</p>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-6 grid gap-5 lg:grid-cols-2">
+        <div className="glass-card rounded-lg p-6">
+          <h3 className="text-2xl font-semibold text-white">
+            MVP na pierwsze 90 dni
+          </h3>
+          <div className="mt-6 space-y-3">
+            {technologyMvp.map((item) => (
+              <p key={item} className="leading-7 text-mist/75">
+                {item}
+              </p>
+            ))}
+          </div>
+        </div>
+        <div className="rounded-lg border border-white/10 bg-white/[0.035] p-6">
+          <h3 className="text-2xl font-semibold text-white">
+            Automatyzować dopiero po walidacji
+          </h3>
+          <div className="mt-6 space-y-3">
+            {technologyLater.map((item) => (
+              <p key={item} className="leading-7 text-mist/75">
+                {item}
+              </p>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function StickyNav({ homeHref }: { homeHref: string }) {
   const links = [
     ["Teza", "#thesis"],
+    ["Technologia", "#technology"],
     ["Rynek", "#market"],
     ["Ekonomia", "#economics"],
     ["Kalkulator", "#calculator"],
@@ -928,6 +1076,38 @@ function SourceNote() {
             scenariusze przychodowe, koszty w kalkulatorze i progi skali. To
             nie są dane historyczne.
           </p>
+          <p>
+            <a
+              href="https://www.iata.org/en/programs/innovation/digital-identity/"
+              className="font-semibold text-electric hover:text-white"
+            >
+              IATA: Digital Identity Program.
+            </a>{" "}
+            Kierunek rynkowy dla cyfrowej podróży i contactless travel. W
+            MotionPort traktowany jako kontekst, nie gotowa integracja.
+          </p>
+          <p>
+            <a
+              href="https://www.energy.gov/cmei/femp/telematics-federal-fleets-guide-efficient-fleet-management"
+              className="font-semibold text-electric hover:text-white"
+            >
+              U.S. Department of Energy: fleet telematics.
+            </a>{" "}
+            Telematyka wspiera pomiar wykorzystania, utrzymania i kosztów floty.
+            Integracja w MotionPort byłaby etapem po walidacji MVP.
+          </p>
+          <p>
+            <a
+              href="https://www.nrel.gov/transportation/electric-vehicle-infrastructure-rental-car-tool"
+              className="font-semibold text-electric hover:text-white"
+            >
+              NREL: EVI-Rental.
+            </a>{" "}
+            Narzędzie pokazuje, że EV rental przy lotniskach wymaga modelowania
+            ładowania, gotowości aut i wpływu na operacje. MotionPort zakłada
+            mieszanie EV, hybryd i wybranych aut spalinowych, aby ograniczyć to
+            ryzyko w pilotażu.
+          </p>
         </div>
         <p className="mt-7 rounded-lg border border-limepulse/20 bg-limepulse/[0.045] p-4 leading-7 text-mist/75">
           Materiał zawiera założenia robocze do rozmów inwestorskich.
@@ -1032,6 +1212,12 @@ export default function InvestorPage() {
                   Sprawdź ekonomię pilotażu
                 </a>
                 <a
+                  href="#technology"
+                  className="rounded-md border border-white/[0.15] px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-white/10"
+                >
+                  Zobacz Airport Mobility OS
+                </a>
+                <a
                   href="#exit"
                   className="rounded-md border border-limepulse/[0.35] px-5 py-3 text-center text-sm font-semibold text-limepulse transition hover:bg-limepulse/10"
                 >
@@ -1050,6 +1236,7 @@ export default function InvestorPage() {
         </section>
 
         <MemoCard />
+        <TechnologyLayer />
 
         <section className="section-shell py-16 sm:py-20">
           <SectionHeader
