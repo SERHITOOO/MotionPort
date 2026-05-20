@@ -1241,8 +1241,8 @@ export default function InvestorPage() {
         <section className="section-shell py-16 sm:py-20">
           <SectionHeader
             eyebrow="Najważniejsze pytania inwestora"
-            title="Co inwestor pomyśli w pierwszych 5 minutach"
-            text="Te pytania trzeba odpowiedzieć przed rozmową, nie po niej."
+            title="Pytania, które trzeba zamknąć przed decyzją o pilotażu"
+            text="Sekcja odpowiada wprost na najczęstsze wątpliwości: kapitałochłonność, konkurencję, popyt, skalowalność i potencjalny exit."
           />
           <div className="grid gap-5 lg:grid-cols-2">
             {objectionsData.map((item, index) => (
