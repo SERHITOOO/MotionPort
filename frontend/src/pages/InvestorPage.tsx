@@ -84,14 +84,45 @@ const airportMapPoints: Record<
     x: string;
     y: string;
     lane: string;
+    labelTransform: string;
   }
 > = {
-  "Warsaw Chopin": { x: "55%", y: "46%", lane: "Hub startowy" },
-  "Kraków Balice": { x: "57%", y: "75%", lane: "Premium leisure + biznes" },
-  Gdańsk: { x: "48%", y: "15%", lane: "Leisure + regional business" },
-  Katowice: { x: "49%", y: "70%", lane: "Catchment regionalny" },
-  Wrocław: { x: "31%", y: "66%", lane: "Tech + corporate" },
-  Poznań: { x: "28%", y: "48%", lane: "Biznes + eventy" }
+  "Warsaw Chopin": {
+    x: "55%",
+    y: "46%",
+    lane: "Hub startowy",
+    labelTransform: "translate(24px, -50%)"
+  },
+  "Kraków Balice": {
+    x: "57%",
+    y: "75%",
+    lane: "Premium leisure + biznes",
+    labelTransform: "translate(24px, 8px)"
+  },
+  Gdańsk: {
+    x: "48%",
+    y: "15%",
+    lane: "Leisure + regional business",
+    labelTransform: "translate(22px, -50%)"
+  },
+  Katowice: {
+    x: "49%",
+    y: "70%",
+    lane: "Catchment regionalny",
+    labelTransform: "translate(calc(-100% - 22px), -50%)"
+  },
+  Wrocław: {
+    x: "31%",
+    y: "66%",
+    lane: "Tech + corporate",
+    labelTransform: "translate(22px, -50%)"
+  },
+  Poznań: {
+    x: "28%",
+    y: "48%",
+    lane: "Biznes + eventy",
+    labelTransform: "translate(22px, -50%)"
+  }
 };
 
 const topSixTraffic2025 = airportData.reduce(
@@ -920,7 +951,9 @@ function AirportRolloutMap() {
                 key={airport.name}
                 type="button"
                 onClick={() => setSelectedAirport(airport)}
-                className="absolute z-20 -translate-x-1/2 -translate-y-1/2 text-left"
+                className={`absolute -translate-x-1/2 -translate-y-1/2 text-left ${
+                  isSelected ? "z-30" : "z-20"
+                }`}
                 style={{ left: point.x, top: point.y }}
               >
                 <span
@@ -938,11 +971,12 @@ function AirportRolloutMap() {
                   />
                 </span>
                 <span
-                  className={`absolute left-5 top-1/2 hidden min-w-max -translate-y-1/2 rounded-md border px-3 py-2 text-xs font-semibold backdrop-blur sm:block ${
+                  className={`absolute left-0 top-0 hidden min-w-max rounded-md border px-3 py-2 text-xs font-semibold backdrop-blur sm:block ${
                     isSelected
                       ? "border-limepulse/30 bg-night/85 text-white"
                       : "border-white/10 bg-night/65 text-mist/65"
                   }`}
+                  style={{ transform: point.labelTransform }}
                 >
                   {airport.shortName}
                 </span>
