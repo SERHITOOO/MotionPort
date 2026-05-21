@@ -858,6 +858,7 @@ function AirportChart() {
 function AirportRolloutMap() {
   const [selectedAirport, setSelectedAirport] = useState(airportData[0]);
   const selectedPoint = airportMapPoints[selectedAirport.name];
+  const hubPoint = airportMapPoints["Warsaw Chopin"];
 
   return (
     <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
@@ -882,9 +883,33 @@ function AirportRolloutMap() {
         <div className="relative z-10 mt-7 h-[390px] overflow-hidden rounded-[34px] border border-white/[0.08] bg-night/45 shadow-inner sm:h-[430px]">
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:34px_34px]" />
           <div className="pointer-events-none absolute inset-8 rounded-[34px] border border-white/[0.055]" />
-          <div className="pointer-events-none absolute left-[55%] top-[46%] h-[32%] w-px origin-top -rotate-[22deg] bg-gradient-to-b from-electric/60 to-transparent" />
-          <div className="pointer-events-none absolute left-[55%] top-[46%] h-[28%] w-px origin-top rotate-[42deg] bg-gradient-to-b from-electric/50 to-transparent" />
-          <div className="pointer-events-none absolute left-[55%] top-[46%] h-[30%] w-px origin-top rotate-[105deg] bg-gradient-to-b from-limepulse/45 to-transparent" />
+          <svg
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-10 h-full w-full"
+            preserveAspectRatio="none"
+          >
+            {airportData
+              .filter((airport) => airport.name !== "Warsaw Chopin")
+              .map((airport) => {
+                const point = airportMapPoints[airport.name];
+                const isSelected = airport.name === selectedAirport.name;
+
+                return (
+                  <line
+                    key={airport.name}
+                    x1={hubPoint.x}
+                    y1={hubPoint.y}
+                    x2={point.x}
+                    y2={point.y}
+                    stroke={isSelected ? "rgba(182,255,77,0.72)" : "rgba(45,226,255,0.30)"}
+                    strokeWidth={isSelected ? 1.7 : 1}
+                    strokeLinecap="round"
+                    strokeDasharray={isSelected ? "0" : "5 8"}
+                    vectorEffect="non-scaling-stroke"
+                  />
+                );
+              })}
+          </svg>
 
           {airportData.map((airport) => {
             const point = airportMapPoints[airport.name];
