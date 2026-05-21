@@ -78,6 +78,22 @@ const airportData: Airport[] = [
   }
 ];
 
+const airportMapPoints: Record<
+  string,
+  {
+    x: string;
+    y: string;
+    lane: string;
+  }
+> = {
+  "Warsaw Chopin": { x: "55%", y: "46%", lane: "Hub startowy" },
+  "Kraków Balice": { x: "57%", y: "75%", lane: "Premium leisure + biznes" },
+  Gdańsk: { x: "48%", y: "15%", lane: "Leisure + regional business" },
+  Katowice: { x: "49%", y: "70%", lane: "Catchment regionalny" },
+  Wrocław: { x: "31%", y: "66%", lane: "Tech + corporate" },
+  Poznań: { x: "28%", y: "48%", lane: "Biznes + eventy" }
+};
+
 const topSixTraffic2025 = airportData.reduce(
   (total, airport) => total + airport.passengers2025,
   0
@@ -114,6 +130,45 @@ const scaleData = [10, 25, 50, 100, 250].map((cars) => ({
   cars,
   monthlyRevenue: cars * 6300
 }));
+
+const pilotSimulatorPresets = [
+  {
+    name: "Lean",
+    fleetSize: 10,
+    adr: 300,
+    rentalDays: 14,
+    leaseCost: 2900,
+    insurance: 600,
+    cleaningCost: 75,
+    damageReserve: 450,
+    cac: 70,
+    bookings: 7
+  },
+  {
+    name: "Bazowy",
+    fleetSize: 10,
+    adr: 350,
+    rentalDays: 18,
+    leaseCost: 3200,
+    insurance: 650,
+    cleaningCost: 80,
+    damageReserve: 450,
+    cac: 65,
+    bookings: 8
+  },
+  {
+    name: "Premium",
+    fleetSize: 10,
+    adr: 450,
+    rentalDays: 22,
+    leaseCost: 3800,
+    insurance: 800,
+    cleaningCost: 95,
+    damageReserve: 600,
+    cac: 85,
+    bookings: 9
+  }
+];
 
 const heroMetrics = [
   {
@@ -800,6 +855,126 @@ function AirportChart() {
   );
 }
 
+function AirportRolloutMap() {
+  const [selectedAirport, setSelectedAirport] = useState(airportData[0]);
+  const selectedPoint = airportMapPoints[selectedAirport.name];
+
+  return (
+    <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="relative min-h-[520px] overflow-hidden rounded-lg border border-white/10 bg-[radial-gradient(circle_at_55%_45%,rgba(45,226,255,0.18),transparent_24%),radial-gradient(circle_at_35%_62%,rgba(182,255,77,0.10),transparent_18%),linear-gradient(145deg,rgba(255,255,255,0.08),rgba(255,255,255,0.025))] p-5">
+        <div className="pointer-events-none absolute inset-5 rounded-lg border border-white/[0.06]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:34px_34px]" />
+        <div className="relative z-10 flex items-start justify-between gap-4">
+          <div>
+            <p className="eyebrow border-electric/20 bg-electric/10 text-electric">
+              Rollout map
+            </p>
+            <h3 className="mt-5 max-w-xl text-3xl font-semibold tracking-tight text-white">
+              Airport-by-airport playbook, nie przypadkowa ekspansja.
+            </h3>
+          </div>
+          <p className="hidden max-w-[220px] text-right text-xs leading-5 text-mist/45 sm:block">
+            Schemat poglądowy. Priorytety wejścia wymagają potwierdzenia z
+            partnerem lokalizacji i warunkami floty.
+          </p>
+        </div>
+
+        <div className="absolute inset-x-8 bottom-8 top-32 rounded-[44px] border border-white/[0.08] bg-night/35 shadow-inner" />
+        <div className="pointer-events-none absolute left-[55%] top-[46%] h-[32%] w-px origin-top -rotate-[22deg] bg-gradient-to-b from-electric/60 to-transparent" />
+        <div className="pointer-events-none absolute left-[55%] top-[46%] h-[28%] w-px origin-top rotate-[42deg] bg-gradient-to-b from-electric/50 to-transparent" />
+        <div className="pointer-events-none absolute left-[55%] top-[46%] h-[30%] w-px origin-top rotate-[105deg] bg-gradient-to-b from-limepulse/45 to-transparent" />
+
+        {airportData.map((airport) => {
+          const point = airportMapPoints[airport.name];
+          const isSelected = airport.name === selectedAirport.name;
+
+          return (
+            <button
+              key={airport.name}
+              type="button"
+              onClick={() => setSelectedAirport(airport)}
+              className="absolute z-20 -translate-x-1/2 -translate-y-1/2 text-left"
+              style={{ left: point.x, top: point.y }}
+            >
+              <span
+                className={`absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border transition ${
+                  isSelected
+                    ? "border-limepulse/70 bg-limepulse/15 shadow-[0_0_36px_rgba(182,255,77,0.25)]"
+                    : "border-electric/30 bg-electric/10"
+                }`}
+              />
+              <span className="relative flex h-4 w-4 rounded-full bg-white p-1 shadow-[0_0_28px_rgba(45,226,255,0.70)]">
+                <span
+                  className={`h-full w-full rounded-full ${
+                    isSelected ? "bg-limepulse" : "bg-electric"
+                  }`}
+                />
+              </span>
+              <span
+                className={`absolute left-5 top-1/2 hidden min-w-max -translate-y-1/2 rounded-md border px-3 py-2 text-xs font-semibold backdrop-blur sm:block ${
+                  isSelected
+                    ? "border-limepulse/30 bg-night/85 text-white"
+                    : "border-white/10 bg-night/65 text-mist/65"
+                }`}
+              >
+                {airport.shortName}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
+      <motion.div
+        key={selectedAirport.name}
+        initial={{ y: 16, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.28 }}
+        className="glass-card rounded-lg p-6"
+      >
+        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-electric">
+          Priorytet {selectedAirport.priority}
+        </p>
+        <h3 className="mt-4 text-3xl font-semibold tracking-tight text-white">
+          {selectedAirport.name}
+        </h3>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <div className="rounded-lg border border-white/10 bg-white/[0.035] p-4">
+            <p className="text-2xl font-semibold text-white">
+              {formatNumber(selectedAirport.passengers2025)}
+            </p>
+            <p className="mt-2 text-xs uppercase tracking-[0.16em] text-mist/45">
+              pasażerowie 2025
+            </p>
+          </div>
+          <div className="rounded-lg border border-limepulse/20 bg-limepulse/[0.045] p-4">
+            <p className="text-2xl font-semibold text-limepulse">
+              +{selectedAirport.growth}%
+            </p>
+            <p className="mt-2 text-xs uppercase tracking-[0.16em] text-mist/45">
+              wzrost r/r
+            </p>
+          </div>
+        </div>
+        <div className="mt-5 rounded-lg border border-white/10 bg-night/40 p-5">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-mist/50">
+            Rola w strategii
+          </p>
+          <p className="mt-3 leading-7 text-mist/75">{selectedAirport.role}</p>
+        </div>
+        <div className="mt-5 rounded-lg border border-electric/20 bg-electric/[0.045] p-5">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-electric">
+            {selectedPoint.lane}
+          </p>
+          <p className="mt-3 leading-7 text-mist/75">
+            Kliknięcie lotniska zmienia parametry ekspansji. Docelowo ten moduł
+            może pokazywać lokalny CAC, obłożenie, partnerów i progi wejścia.
+          </p>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
 function ScenarioChart() {
   const max = Math.max(...scenarioData.map((scenario) => scenario.monthlyRevenue));
 
@@ -929,38 +1104,137 @@ function InvestorCalculator() {
     ["Średnia liczba rezerwacji na auto", bookings, setBookings, 1, 30]
   ] as const;
 
+  const applyPreset = (preset: (typeof pilotSimulatorPresets)[number]) => {
+    setFleetSize(preset.fleetSize);
+    setAdr(preset.adr);
+    setRentalDays(preset.rentalDays);
+    setLeaseCost(preset.leaseCost);
+    setInsurance(preset.insurance);
+    setCleaningCost(preset.cleaningCost);
+    setDamageReserve(preset.damageReserve);
+    setCac(preset.cac);
+    setBookings(preset.bookings);
+  };
+
+  const contributionRatio =
+    output.monthlyRevenue > 0
+      ? Math.max(
+          0,
+          Math.min(100, (output.contributionMargin / output.monthlyRevenue) * 100)
+        )
+      : 0;
+  const breakEvenProgress = Math.min(100, (rentalDays / output.breakEvenDays) * 100);
+
   return (
     <section id="calculator" className="section-shell py-16 sm:py-20">
       <SectionHeader
-        eyebrow="Investor calculator"
-        title="Kalkulator ma pokazać wrażliwość, nie obiecać wynik."
-        text="Wartości są edytowalnymi założeniami w kodzie i interfejsie. Decyzja o skali powinna wynikać z marży kontrybucyjnej, a nie z samego przychodu."
+        eyebrow="Symulator pilotażu"
+        title="Zmieniaj założenia i od razu zobacz wpływ na ekonomię 10 aut."
+        text="To nie jest prognoza finansowa. To interaktywny model wrażliwości, który pokazuje, które zmienne trzeba potwierdzić przed skalowaniem."
       />
-      <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="glass-card grid gap-4 rounded-lg p-5 sm:p-7">
-          {inputs.map(([label, value, setter, min, max]) => (
-            <label key={label} className="grid gap-2">
-              <div className="flex items-center justify-between gap-4">
-                <span className="text-sm font-semibold text-mist/75">{label}</span>
-                <span className="text-sm text-electric">{formatCurrency(value)}</span>
-              </div>
-              <input
-                type="range"
-                min={min}
-                max={max}
-                value={value}
-                onChange={(event) => setter(Number(event.target.value))}
-                className="w-full accent-electric"
-              />
-            </label>
-          ))}
+      <div className="grid gap-6 lg:grid-cols-[1.02fr_0.98fr]">
+        <div className="glass-card rounded-lg p-5 sm:p-7">
+          <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            {pilotSimulatorPresets.map((preset) => (
+              <button
+                key={preset.name}
+                type="button"
+                onClick={() => applyPreset(preset)}
+                className="rounded-md border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-white transition hover:border-electric hover:bg-electric/10"
+              >
+                {preset.name}
+              </button>
+            ))}
+          </div>
+          <div className="grid gap-4">
+            {inputs.map(([label, value, setter, min, max]) => (
+              <label key={label} className="grid gap-2">
+                <div className="flex items-center justify-between gap-4">
+                  <span className="text-sm font-semibold text-mist/75">{label}</span>
+                  <span className="text-sm text-electric">{formatCurrency(value)}</span>
+                </div>
+                <input
+                  type="range"
+                  min={min}
+                  max={max}
+                  value={value}
+                  onChange={(event) => setter(Number(event.target.value))}
+                  className="w-full accent-electric"
+                />
+              </label>
+            ))}
+          </div>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
+
+        <div className="grid gap-4">
+          <motion.div
+            key={`${output.monthlyRevenue}-${output.contributionMargin}`}
+            initial={{ y: 12, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.25 }}
+            className="rounded-lg border border-electric/20 bg-[linear-gradient(145deg,rgba(45,226,255,0.10),rgba(255,255,255,0.035))] p-6"
+          >
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-electric">
+              Sygnał pilotażu na żywo
+            </p>
+            <div className="mt-5 grid gap-5 sm:grid-cols-2">
+              <div>
+                <p className="text-4xl font-semibold tracking-tight text-white">
+                  {formatCurrency(output.monthlyRevenue)} PLN
+                </p>
+                <p className="mt-2 text-sm text-mist/55">miesięczny przychód</p>
+              </div>
+              <div>
+                <p
+                  className={`text-4xl font-semibold tracking-tight ${
+                    output.contributionMargin >= 0
+                      ? "text-limepulse"
+                      : "text-red-300"
+                  }`}
+                >
+                  {formatCurrency(output.contributionMargin)} PLN
+                </p>
+                <p className="mt-2 text-sm text-mist/55">
+                  szacowana kontrybucja
+                </p>
+              </div>
+            </div>
+            <div className="mt-7 space-y-5">
+              <div>
+                <div className="mb-2 flex justify-between text-xs uppercase tracking-[0.16em] text-mist/50">
+                  <span>Marża / przychód</span>
+                  <span>{contributionRatio.toFixed(0)}%</span>
+                </div>
+                <div className="h-3 rounded-full bg-white/10">
+                  <motion.div
+                    animate={{ width: `${contributionRatio}%` }}
+                    transition={{ duration: 0.35 }}
+                    className="h-3 rounded-full bg-gradient-to-r from-electric to-limepulse"
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="mb-2 flex justify-between text-xs uppercase tracking-[0.16em] text-mist/50">
+                  <span>Dni najmu vs break-even</span>
+                  <span>
+                    {rentalDays}/{output.breakEvenDays} dni
+                  </span>
+                </div>
+                <div className="h-3 rounded-full bg-white/10">
+                  <motion.div
+                    animate={{ width: `${breakEvenProgress}%` }}
+                    transition={{ duration: 0.35 }}
+                    className="h-3 rounded-full bg-gradient-to-r from-limepulse to-electric"
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
           {[
-            ["Miesięczny przychód", `${formatCurrency(output.monthlyRevenue)} PLN`],
             ["Przychód annualizowany", `${formatCurrency(output.annualizedRevenue)} PLN`],
             ["Koszt na auto", `${formatCurrency(output.costPerCar)} PLN`],
-            ["Szacowana marża kontrybucyjna", `${formatCurrency(output.contributionMargin)} PLN`],
             ["Próg rentowności w dniach najmu", `${output.breakEvenDays} dni`],
             ["Przychód na pojazd", `${formatCurrency(output.revenuePerVehicle)} PLN`],
             ["Kontrybucja na pojazd", `${formatCurrency(output.contributionPerVehicle)} PLN`]
@@ -975,6 +1249,7 @@ function InvestorCalculator() {
               </p>
             </div>
           ))}
+          </div>
         </div>
       </div>
     </section>
@@ -1225,7 +1500,7 @@ export default function InvestorPage() {
                 </a>
               </div>
             </motion.div>
-            <PremiumVehicleRender compact priority />
+            <PremiumVehicleRender compact priority showHotspots />
           </div>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
@@ -1318,7 +1593,8 @@ export default function InvestorPage() {
             eyebrow="Ekspansja lotniskowa"
             title="Ekspansja lotnisko po lotnisku wymaga playbooka, nie tylko floty."
           />
-          <div className="overflow-x-auto rounded-lg border border-white/10">
+          <AirportRolloutMap />
+          <div className="mt-6 overflow-x-auto rounded-lg border border-white/10">
             <table className="w-full min-w-[860px] border-collapse text-left">
               <thead className="bg-white/[0.06] text-xs uppercase tracking-[0.16em] text-mist/50">
                 <tr>

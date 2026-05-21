@@ -6,6 +6,7 @@ type PremiumVehicleRenderProps = {
   className?: string;
   compact?: boolean;
   priority?: boolean;
+  showHotspots?: boolean;
 };
 
 const visualLabels = [
@@ -14,12 +15,35 @@ const visualLabels = [
   "Założenie: 10 aut przy Lotnisku Chopina"
 ];
 
+const vehicleHotspots = [
+  {
+    label: "Digital passport",
+    text: "QR / tablet w aucie: instrukcja, zasady zwrotu, zgłoszenie szkody i szybki kontakt.",
+    x: "28%",
+    y: "45%"
+  },
+  {
+    label: "Smart handover",
+    text: "Pre-check, zdjęcia auta, depozyt i czytelny standard odbioru przy lotnisku.",
+    x: "58%",
+    y: "37%"
+  },
+  {
+    label: "Fleet data",
+    text: "Obłożenie, ADR, szkody, feedback klienta i popyt na segmenty floty.",
+    x: "73%",
+    y: "57%"
+  }
+];
+
 export default function PremiumVehicleRender({
   className = "",
   compact = false,
-  priority = false
+  priority = false,
+  showHotspots = false
 }: PremiumVehicleRenderProps) {
   const [imageFailed, setImageFailed] = useState(false);
+  const [activeHotspot, setActiveHotspot] = useState(0);
 
   return (
     <motion.figure
@@ -65,14 +89,82 @@ export default function PremiumVehicleRender({
             </div>
           </div>
         ) : (
-          <img
-            src={premiumAsianSuvRender}
-            alt="Realistyczny render 3D no-brand premium Asian electric SUV"
-            loading={priority ? "eager" : "lazy"}
-            decoding="async"
-            onError={() => setImageFailed(true)}
-            className="relative z-10 mx-auto aspect-[3/2] w-full object-contain drop-shadow-[0_28px_70px_rgba(0,0,0,0.70)]"
-          />
+          <div className="relative">
+            <img
+              src={premiumAsianSuvRender}
+              alt="Realistyczny render 3D no-brand premium Asian electric SUV"
+              loading={priority ? "eager" : "lazy"}
+              decoding="async"
+              onError={() => setImageFailed(true)}
+              className="relative z-10 mx-auto aspect-[3/2] w-full object-contain drop-shadow-[0_28px_70px_rgba(0,0,0,0.70)]"
+            />
+
+            {showHotspots && (
+              <>
+                <div className="absolute inset-0 z-30 hidden sm:block">
+                  {vehicleHotspots.map((hotspot, index) => {
+                    const isActive = activeHotspot === index;
+
+                    return (
+                      <button
+                        key={hotspot.label}
+                        type="button"
+                        onMouseEnter={() => setActiveHotspot(index)}
+                        onFocus={() => setActiveHotspot(index)}
+                        onClick={() => setActiveHotspot(index)}
+                        className="group absolute -translate-x-1/2 -translate-y-1/2"
+                        style={{ left: hotspot.x, top: hotspot.y }}
+                        aria-label={hotspot.label}
+                      >
+                        <span
+                          className={`absolute left-1/2 top-1/2 h-11 w-11 -translate-x-1/2 -translate-y-1/2 rounded-full border ${
+                            isActive
+                              ? "border-limepulse/60 bg-limepulse/15"
+                              : "border-electric/35 bg-electric/10"
+                          } blur-[1px] transition`}
+                        />
+                        <span className="relative flex h-4 w-4 items-center justify-center rounded-full bg-white shadow-[0_0_26px_rgba(45,226,255,0.85)]">
+                          <span
+                            className={`h-2 w-2 rounded-full ${
+                              isActive ? "bg-limepulse" : "bg-electric"
+                            }`}
+                          />
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <motion.div
+                  key={vehicleHotspots[activeHotspot].label}
+                  initial={{ y: 10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.25 }}
+                  className="relative z-30 mt-4 rounded-lg border border-white/10 bg-night/70 p-4 backdrop-blur sm:absolute sm:bottom-5 sm:left-5 sm:mt-0 sm:max-w-[330px]"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-electric">
+                    {vehicleHotspots[activeHotspot].label}
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-mist/75">
+                    {vehicleHotspots[activeHotspot].text}
+                  </p>
+                  <div className="mt-4 flex gap-2 sm:hidden">
+                    {vehicleHotspots.map((hotspot, index) => (
+                      <button
+                        key={hotspot.label}
+                        type="button"
+                        onClick={() => setActiveHotspot(index)}
+                        className={`h-2 flex-1 rounded-full ${
+                          activeHotspot === index ? "bg-electric" : "bg-white/15"
+                        }`}
+                        aria-label={hotspot.label}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              </>
+            )}
+          </div>
         )}
       </div>
 
