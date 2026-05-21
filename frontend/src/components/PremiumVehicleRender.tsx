@@ -89,18 +89,18 @@ export default function PremiumVehicleRender({
             </div>
           </div>
         ) : (
-          <div className="relative">
-            <img
-              src={premiumAsianSuvRender}
-              alt="Realistyczny render 3D no-brand premium Asian electric SUV"
-              loading={priority ? "eager" : "lazy"}
-              decoding="async"
-              onError={() => setImageFailed(true)}
-              className="relative z-10 mx-auto aspect-[3/2] w-full object-contain drop-shadow-[0_28px_70px_rgba(0,0,0,0.70)]"
-            />
+          <div>
+            <div className="relative">
+              <img
+                src={premiumAsianSuvRender}
+                alt="Realistyczny render 3D no-brand premium Asian electric SUV"
+                loading={priority ? "eager" : "lazy"}
+                decoding="async"
+                onError={() => setImageFailed(true)}
+                className="relative z-10 mx-auto aspect-[3/2] w-full object-contain drop-shadow-[0_28px_70px_rgba(0,0,0,0.70)]"
+              />
 
-            {showHotspots && (
-              <>
+              {showHotspots && (
                 <div className="absolute inset-0 z-30 hidden sm:block">
                   {vehicleHotspots.map((hotspot, index) => {
                     const isActive = activeHotspot === index;
@@ -134,35 +134,40 @@ export default function PremiumVehicleRender({
                     );
                   })}
                 </div>
+              )}
+            </div>
 
-                <motion.div
-                  key={vehicleHotspots[activeHotspot].label}
-                  initial={{ y: 10, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.25 }}
-                  className="relative z-30 mt-4 rounded-lg border border-white/10 bg-night/70 p-4 backdrop-blur sm:absolute sm:bottom-5 sm:left-5 sm:mt-0 sm:max-w-[330px]"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-electric">
-                    {vehicleHotspots[activeHotspot].label}
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-mist/75">
-                    {vehicleHotspots[activeHotspot].text}
-                  </p>
-                  <div className="mt-4 flex gap-2 sm:hidden">
-                    {vehicleHotspots.map((hotspot, index) => (
-                      <button
-                        key={hotspot.label}
-                        type="button"
-                        onClick={() => setActiveHotspot(index)}
-                        className={`h-2 flex-1 rounded-full ${
-                          activeHotspot === index ? "bg-electric" : "bg-white/15"
+            {showHotspots && (
+              <div className="relative z-30 mt-4 grid gap-3 sm:grid-cols-3">
+                {vehicleHotspots.map((hotspot, index) => {
+                  const isActive = activeHotspot === index;
+
+                  return (
+                    <button
+                      key={hotspot.label}
+                      type="button"
+                      onClick={() => setActiveHotspot(index)}
+                      onMouseEnter={() => setActiveHotspot(index)}
+                      className={`rounded-lg border p-4 text-left transition ${
+                        isActive
+                          ? "border-electric/30 bg-electric/[0.08]"
+                          : "border-white/10 bg-night/50 hover:border-white/20"
+                      }`}
+                    >
+                      <p
+                        className={`text-xs font-semibold uppercase tracking-[0.16em] ${
+                          isActive ? "text-electric" : "text-mist/50"
                         }`}
-                        aria-label={hotspot.label}
-                      />
-                    ))}
-                  </div>
-                </motion.div>
-              </>
+                      >
+                        {hotspot.label}
+                      </p>
+                      <p className="mt-2 text-sm leading-6 text-mist/70">
+                        {hotspot.text}
+                      </p>
+                    </button>
+                  );
+                })}
+              </div>
             )}
           </div>
         )}
