@@ -861,67 +861,70 @@ function AirportRolloutMap() {
 
   return (
     <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-      <div className="relative min-h-[520px] overflow-hidden rounded-lg border border-white/10 bg-[radial-gradient(circle_at_55%_45%,rgba(45,226,255,0.18),transparent_24%),radial-gradient(circle_at_35%_62%,rgba(182,255,77,0.10),transparent_18%),linear-gradient(145deg,rgba(255,255,255,0.08),rgba(255,255,255,0.025))] p-5">
-        <div className="pointer-events-none absolute inset-5 rounded-lg border border-white/[0.06]" />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:34px_34px]" />
-        <div className="relative z-10 flex items-start justify-between gap-4">
+      <div className="relative overflow-hidden rounded-lg border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.08),rgba(255,255,255,0.025))] p-5">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_58%_52%,rgba(45,226,255,0.16),transparent_24%),radial-gradient(circle_at_36%_66%,rgba(182,255,77,0.10),transparent_18%)]" />
+
+        <div className="relative z-10 flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <p className="eyebrow border-electric/20 bg-electric/10 text-electric">
-              Rollout map
+              Mapa rollout
             </p>
-            <h3 className="mt-5 max-w-xl text-3xl font-semibold tracking-tight text-white">
-              Airport-by-airport playbook, nie przypadkowa ekspansja.
+            <h3 className="mt-5 max-w-md text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+              Priorytety wejścia na kolejne lotniska
             </h3>
           </div>
-          <p className="hidden max-w-[220px] text-right text-xs leading-5 text-mist/45 sm:block">
+          <p className="max-w-[260px] text-sm leading-6 text-mist/55 sm:text-right">
             Schemat poglądowy. Priorytety wejścia wymagają potwierdzenia z
             partnerem lokalizacji i warunkami floty.
           </p>
         </div>
 
-        <div className="absolute inset-x-8 bottom-8 top-32 rounded-[44px] border border-white/[0.08] bg-night/35 shadow-inner" />
-        <div className="pointer-events-none absolute left-[55%] top-[46%] h-[32%] w-px origin-top -rotate-[22deg] bg-gradient-to-b from-electric/60 to-transparent" />
-        <div className="pointer-events-none absolute left-[55%] top-[46%] h-[28%] w-px origin-top rotate-[42deg] bg-gradient-to-b from-electric/50 to-transparent" />
-        <div className="pointer-events-none absolute left-[55%] top-[46%] h-[30%] w-px origin-top rotate-[105deg] bg-gradient-to-b from-limepulse/45 to-transparent" />
+        <div className="relative z-10 mt-7 h-[390px] overflow-hidden rounded-[34px] border border-white/[0.08] bg-night/45 shadow-inner sm:h-[430px]">
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:34px_34px]" />
+          <div className="pointer-events-none absolute inset-8 rounded-[34px] border border-white/[0.055]" />
+          <div className="pointer-events-none absolute left-[55%] top-[46%] h-[32%] w-px origin-top -rotate-[22deg] bg-gradient-to-b from-electric/60 to-transparent" />
+          <div className="pointer-events-none absolute left-[55%] top-[46%] h-[28%] w-px origin-top rotate-[42deg] bg-gradient-to-b from-electric/50 to-transparent" />
+          <div className="pointer-events-none absolute left-[55%] top-[46%] h-[30%] w-px origin-top rotate-[105deg] bg-gradient-to-b from-limepulse/45 to-transparent" />
 
-        {airportData.map((airport) => {
-          const point = airportMapPoints[airport.name];
-          const isSelected = airport.name === selectedAirport.name;
+          {airportData.map((airport) => {
+            const point = airportMapPoints[airport.name];
+            const isSelected = airport.name === selectedAirport.name;
 
-          return (
-            <button
-              key={airport.name}
-              type="button"
-              onClick={() => setSelectedAirport(airport)}
-              className="absolute z-20 -translate-x-1/2 -translate-y-1/2 text-left"
-              style={{ left: point.x, top: point.y }}
-            >
-              <span
-                className={`absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border transition ${
-                  isSelected
-                    ? "border-limepulse/70 bg-limepulse/15 shadow-[0_0_36px_rgba(182,255,77,0.25)]"
-                    : "border-electric/30 bg-electric/10"
-                }`}
-              />
-              <span className="relative flex h-4 w-4 rounded-full bg-white p-1 shadow-[0_0_28px_rgba(45,226,255,0.70)]">
+            return (
+              <button
+                key={airport.name}
+                type="button"
+                onClick={() => setSelectedAirport(airport)}
+                className="absolute z-20 -translate-x-1/2 -translate-y-1/2 text-left"
+                style={{ left: point.x, top: point.y }}
+              >
                 <span
-                  className={`h-full w-full rounded-full ${
-                    isSelected ? "bg-limepulse" : "bg-electric"
+                  className={`absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border transition ${
+                    isSelected
+                      ? "border-limepulse/70 bg-limepulse/15 shadow-[0_0_36px_rgba(182,255,77,0.25)]"
+                      : "border-electric/30 bg-electric/10"
                   }`}
                 />
-              </span>
-              <span
-                className={`absolute left-5 top-1/2 hidden min-w-max -translate-y-1/2 rounded-md border px-3 py-2 text-xs font-semibold backdrop-blur sm:block ${
-                  isSelected
-                    ? "border-limepulse/30 bg-night/85 text-white"
-                    : "border-white/10 bg-night/65 text-mist/65"
-                }`}
-              >
-                {airport.shortName}
-              </span>
-            </button>
-          );
-        })}
+                <span className="relative flex h-4 w-4 rounded-full bg-white p-1 shadow-[0_0_28px_rgba(45,226,255,0.70)]">
+                  <span
+                    className={`h-full w-full rounded-full ${
+                      isSelected ? "bg-limepulse" : "bg-electric"
+                    }`}
+                  />
+                </span>
+                <span
+                  className={`absolute left-5 top-1/2 hidden min-w-max -translate-y-1/2 rounded-md border px-3 py-2 text-xs font-semibold backdrop-blur sm:block ${
+                    isSelected
+                      ? "border-limepulse/30 bg-night/85 text-white"
+                      : "border-white/10 bg-night/65 text-mist/65"
+                  }`}
+                >
+                  {airport.shortName}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <motion.div
